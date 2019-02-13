@@ -4,6 +4,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+ // import Expenses from './components/Expenses.vue';
 
 require('./bootstrap');
 
@@ -19,8 +20,12 @@ Vue.use(Notifications)
 let routes = [
     { name: 'dashboard', path: '/dashboard', component: require('./components/Dashboard.vue') },
     { name: 'example', path: '/example', component: require('./components/Example.vue') },
+    { name: 'expenses', path: '/expenses', component: require('./components/Expenses.vue') },
 
 ]
+
+Vue.component('expenses', require('./components/Expenses.vue'));
+Vue.component('notification', require('./components/Notification.vue'));
 
 const router = new VueRouter({
   mode: 'history',

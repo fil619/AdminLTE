@@ -1,5 +1,5 @@
  <!-- Navbar -->
-<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom  ">
+<nav class="main-header navbar navbar-expand bg-primary navbar-dark border-bottom  ">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -22,9 +22,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
-        <div class="image navbar-image">
-            <!-- <img src="{{ Auth::user()->profile_photo }}" class="img-circle elevation-2" style="height: 2.7rem; width: 2.7rem;" alt="User Image"> -->
-        </div>
+
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 {{ Auth::user()->name }}
@@ -50,6 +48,9 @@
                 </li>
             </ul>
         </li>
+        <div class="image navbar-image">
+          <notification></notification>
+        </div>
     </ul>
 </nav>
 <!-- /.navbar -->

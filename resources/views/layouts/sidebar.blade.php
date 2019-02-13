@@ -34,7 +34,7 @@
                                 <i class="nav-icon fas fa-users"></i><p>Direct Expenses</p>
                             </router-link>
                         </li>
-                        <router-link to="" class="nav-link">
+                        <router-link to="expenses" class="nav-link">
                             <i class="nav-icon fas fa-key"></i><p>Indirect Expenses</p>
                         </router-link>
                     </ul>
