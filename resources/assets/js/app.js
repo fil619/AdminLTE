@@ -5,14 +5,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
  // import Expenses from './components/Expenses.vue';
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 
+import FullCalendar from 'vue-full-calendar'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 
+Vue.use(FullCalendar)
 Vue.use(VueRouter)
 Vue.use(Notifications)
 

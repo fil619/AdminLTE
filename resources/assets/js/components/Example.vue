@@ -1,23 +1,35 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Example Component</div>
-
-                    <div class="panel-body">
-                        I'm an example component!
-                    </div>
-                </div>
-            </div>
-        </div>
+<full-calendar :events="events"></full-calendar>
     </div>
 </template>
 
 <script>
+import 'fullcalendar/dist/fullcalendar.css';
+
     export default {
         mounted() {
             console.log('Example Component mounted.')
-        }
+        },
+        data() {
+    return {
+      events: [
+        {
+            title  : 'event1',
+            start  : '2019-02-01',
+        },
+        {
+            title  : 'event2',
+            start  : '2019-02-05',
+            end    : '2019-02-07',
+        },
+        {
+            title  : 'event3',
+            start  : '2019-02-09T12:30:00',
+            allDay : false,
+        },
+      ]
+    }
+  }
     }
 </script>
