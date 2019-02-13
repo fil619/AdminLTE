@@ -1,0 +1,67 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+$fa-font-path: "../webfonts";
+$material-icons-font-path: '~material-icons/iconfont/';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~admin-lte/dist/css/adminlte.css';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+@import '~material-icons/iconfont/material-icons.scss';
+
+
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.router-link-exact-active{
+    background-color: #3f51b5;
+    color:#fff !important;
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.navbar-badge {
+  position: unset !important;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.form-group.has-error .form-control, .form-group.has-error .input-group-addon {
+    border-color: #dd4b39;
+    box-shadow: none;
+}
+
+.form-group.has-error label {
+    color: #dd4b39;
+}
+
+.form-group.has-error .help-block {
+    color: #dd4b39;
+}
