@@ -1,16 +1,20 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Expense Component</div>
+    <div class="">
+      <br>
+      <md-card>
+         <md-card-header>
+           <div class="md-title">Card without hover effect</div>
+         </md-card-header>
 
-                    <div class="panel-body">
-                        I'm an Expense component!
-                    </div>
-                </div>
-            </div>
-        </div>
+         <md-card-content>
+           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non.
+         </md-card-content>
+
+         <md-card-actions>
+           <md-button>Action</md-button>
+           <md-button>Action</md-button>
+         </md-card-actions>
+       </md-card>
     </div>
 </template>
 

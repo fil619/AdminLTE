@@ -39,6 +39,11 @@
                         </router-link>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <router-link to="/calendar" class="nav-link">
+                        <i class="material-icons" style="display:inline-flex ; vertical-align:middle">date_range</i><p>Calendar</p>
+                    </router-link>
+                </li>
             </ul>
         </nav> <!-- /.sidebar-menu -->
     </div> <!-- /.sidebar -->

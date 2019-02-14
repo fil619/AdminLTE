@@ -9,10 +9,16 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css';
+
+import VueMaterial from 'vue-material'
 import FullCalendar from 'vue-full-calendar'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 
+Vue.use(VueMaterial)
 Vue.use(FullCalendar)
 Vue.use(VueRouter)
 Vue.use(Notifications)
@@ -20,12 +26,11 @@ Vue.use(Notifications)
 
 let routes = [
     { name: 'dashboard', path: '/dashboard', component: require('./components/Dashboard.vue') },
-    { name: 'example', path: '/example', component: require('./components/Example.vue') },
+    { name: 'calendar', path: '/calendar', component: require('./components/Calendar.vue') },
     { name: 'expenses', path: '/expenses', component: require('./components/Expenses.vue') },
 
 ]
 
-Vue.component('expenses', require('./components/Expenses.vue'));
 Vue.component('notification', require('./components/Notification.vue'));
 
 const router = new VueRouter({
