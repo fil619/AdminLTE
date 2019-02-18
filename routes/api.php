@@ -22,16 +22,8 @@
 | to view/update user profiles is also stored here.
 |
 */
-Route::get('users/count', 'UserController@count');
-Route::get('users/count/active', 'UserController@active');
-Route::get('users/count/new', 'UserController@newUsers');
-Route::get('users/count/online', 'UserController@online');
-Route::resource('users', 'UserController');
 
-Route::post('user/update_role/{user}', 'UserController@updateRole');
 
-Route::get('profile', 'UserController@getProfile');
-Route::patch('profile', 'UserController@updateProfile');
 
 /*
 |--------------------------------------------------------------------------

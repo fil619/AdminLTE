@@ -1,7 +1,7 @@
  <!-- Navbar -->
-<nav class="main-header navbar navbar-expand bg-primary navbar-dark border-bottom  ">
+<nav class="main-header navbar navbar-expand bg-primary navbar-dark border-bottom fixed-top ">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
         </li>

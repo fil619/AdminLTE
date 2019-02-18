@@ -17,7 +17,10 @@ import VueMaterial from 'vue-material'
 import FullCalendar from 'vue-full-calendar'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
+import Vuelidate from 'vuelidate'
 
+
+Vue.use(Vuelidate)
 Vue.use(VueMaterial)
 Vue.use(FullCalendar)
 Vue.use(VueRouter)
@@ -27,11 +30,18 @@ Vue.use(Notifications)
 let routes = [
     { name: 'dashboard', path: '/dashboard', component: require('./components/Dashboard.vue') },
     { name: 'calendar', path: '/calendar', component: require('./components/Calendar.vue') },
-    { name: 'expenses', path: '/expenses', component: require('./components/Expenses.vue') },
+    { name: 'directexpenses', path: '/directexpenses', component: require('./components/Expenses/DirectExpenses.vue') },
+    { name: 'expenses', path: '/expenses', component: require('./components/Expenses/InExpenses.vue') },
+    { name: 'ExpScreen', path: '/ExpScreen', component: require('./components/Expenses/ExpScreen.vue') },
+    { name: 'DisplayExpenses', path: '/DisplayExpenses', component: require('./components/Expenses/DisplayExpenses.vue') },
+    { name: 'Ledgers', path: '/Ledgers', component: require('./components/Ledgers.vue') },
 
 ]
 
 Vue.component('notification', require('./components/Notification.vue'));
+Vue.component('DispDirect', require('./components/Expenses/DispDirect.vue'));
+Vue.component('DispInDirect', require('./components/Expenses/DispInDirect.vue'));
+
 
 const router = new VueRouter({
   mode: 'history',

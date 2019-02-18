@@ -14,8 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/app', function () {
+    return view('layouts.app');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
+
+Route::get('setexpense/getiexpenses', 'ExpenseController@getiexpenses');
+Route::get('setexpense/getexpenses', 'ExpenseController@getexpenses');
+Route::resource('/setexpense', 'ExpenseController');
+
+Route::get('/ledger/direct', 'LedgerController@direct');
+Route::get('/ledger/indirect', 'LedgerController@indirect');
+Route::resource('/ledger', 'LedgerController');

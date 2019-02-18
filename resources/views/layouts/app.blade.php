@@ -12,19 +12,13 @@
         <div class="wrapper" id="app">
             @include('layouts.navbar')
             @include('layouts.sidebar')
-            <!-- Main Content -->
             <div class="content-wrapper">
-                <div class="content">
-                    <div class="container-fluid">
+                <div class="content" >
+                    <div class="container-fluid" style="margin-top:50px">
                         <router-view></router-view>
                     </div>
                 </div>
             </div>
-            <!-- /Main Content -->
-            @include('layouts.footer')
-            <!-- @section('scripts')
-                @include('layouts.scripts')
-            @show -->
         </div>
         @endif
 <script src="/js/app.js"></script>

@@ -19,7 +19,11 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p>
                     </router-link>
                 </li>
-
+                <li class="nav-item">
+                    <router-link to="/Ledgers" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i><p>Ledgers</p>
+                    </router-link>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-users"></i>
@@ -30,12 +34,17 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <router-link to="/example" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i><p>Direct Expenses</p>
+                            <router-link to="/DisplayExpenses" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i><p>Display Expenses</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/directexpenses" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i><p>Add Direct Expenses</p>
                             </router-link>
                         </li>
                         <router-link to="expenses" class="nav-link">
-                            <i class="nav-icon fas fa-key"></i><p>Indirect Expenses</p>
+                            <i class="nav-icon fas fa-key"></i><p>Add Indirect Expenses</p>
                         </router-link>
                     </ul>
                 </li>
