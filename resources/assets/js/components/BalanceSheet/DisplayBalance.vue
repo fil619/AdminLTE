@@ -46,8 +46,39 @@
         </table>
         <div class="absolute"><p style="text-align:left;">Total:<span style="float:right;font-weight: bold"> {{liabilities.Liabilities}}</span></p></div>
       </div>
-      <div class="col-md-6" @keydown.esc="selected" >
+      <div class="col-md-6">
 
+
+        <table class="table table-condensed">
+          <tbody>
+            <tr >
+              <th colspan="2" style="text-align: center;">Assets as at {{date.year}}-{{date.month+1}}-{{date.day}}</th>
+            </tr>
+            <tr id='start'>
+              <th @click="togglecurrentassets" >Current Assets</th>
+              <td>{{Assets.current}}</td>
+            </tr>
+            <tr>
+              <div id="c_assets" style="display:none">
+                <ul v-for="(currentassets , index ) in currentassets">
+                  <li>{{currentassets.ledger}} - {{currentassets.amount}}</li>
+                </ul>
+              </div>
+            </tr>
+            <tr>
+              <th @click="togglefixedassets">Fixed Assets</th>
+              <td>{{Assets.fixed}}</td>
+            </tr>
+            <tr>
+              <div id="f_assets" style="display:none">
+                <ul v-for="(fixedassets , index ) in fixedassets">
+                  <li>{{fixedassets.ledger}} - {{fixedassets.amount}}</li>
+                </ul>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+        <div class="absolute"><p style="text-align:left;">Total:<span style="float:right;font-weight: bold"> {{Assets.assets}}</span></p></div>
       </div>
     </div>
 
@@ -65,6 +96,11 @@ export default
             Loan:'',
             Current:''
           },
+          Assets: {
+            assets:'',
+            current:'',
+            fixed:''
+          },
           capital: {
           name:'',
           amount:''
@@ -81,13 +117,17 @@ export default
             year:'',
             month:'',
             day:'',
-          }
+          },
+          fixedassets: {},
+          currentassets: {}
       }
   },
   mounted()
   {
       this.getliabilities();
+      this.assetssum();
       this.liabdetail();
+      this.assets();
 
       var day = new Date();
       this.date.year = day.getFullYear();
@@ -118,7 +158,22 @@ export default
               this.liabilities = response.data;
           });
     },
+    assets()
+    {
+      axios.get('/asset')
+      .then(response => {
+        this.fixedassets = response.data.Fixed;
+        this.currentassets = response.data.Current;
+      });
 
+    },
+    assetssum()
+    {
+      axios.get('/asset/sum')
+          .then(response => {
+              this.Assets = response.data;
+          });
+    },
     togglediv()
     {
         var x = document.getElementById("myDIV");
@@ -142,6 +197,26 @@ export default
     toggleCur()
     {
         var x = document.getElementById("curdiv");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+
+        }
+    },
+    togglecurrentassets()
+    {
+        var x = document.getElementById("c_assets");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+
+        }
+    },
+    togglefixedassets()
+    {
+        var x = document.getElementById("f_assets");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {

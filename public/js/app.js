@@ -125674,6 +125674,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -125683,6 +125714,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 capital: '',
                 Loan: '',
                 Current: ''
+            },
+            Assets: {
+                assets: '',
+                current: '',
+                fixed: ''
             },
             capital: {
                 name: '',
@@ -125700,12 +125736,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 year: '',
                 month: '',
                 day: ''
-            }
+            },
+            fixedassets: {},
+            currentassets: {}
         };
     },
     mounted: function mounted() {
         this.getliabilities();
+        this.assetssum();
         this.liabdetail();
+        this.assets();
 
         var day = new Date();
         this.date.year = day.getFullYear();
@@ -125731,6 +125771,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.liabilities = response.data;
             });
         },
+        assets: function assets() {
+            var _this3 = this;
+
+            axios.get('/asset').then(function (response) {
+                _this3.fixedassets = response.data.Fixed;
+                _this3.currentassets = response.data.Current;
+            });
+        },
+        assetssum: function assetssum() {
+            var _this4 = this;
+
+            axios.get('/asset/sum').then(function (response) {
+                _this4.Assets = response.data;
+            });
+        },
         togglediv: function togglediv() {
             var x = document.getElementById("myDIV");
             if (x.style.display === "none") {
@@ -125749,6 +125804,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         toggleCur: function toggleCur() {
             var x = document.getElementById("curdiv");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        },
+        togglecurrentassets: function togglecurrentassets() {
+            var x = document.getElementById("c_assets");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        },
+        togglefixedassets: function togglefixedassets() {
+            var x = document.getElementById("f_assets");
             if (x.style.display === "none") {
                 x.style.display = "block";
             } else {
@@ -125878,20 +125949,96 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", {
-        staticClass: "col-md-6",
-        on: {
-          keydown: function($event) {
-            if (
-              !$event.type.indexOf("key") &&
-              _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
-            ) {
-              return null
-            }
-            return _vm.selected($event)
-          }
-        }
-      })
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("table", { staticClass: "table table-condensed" }, [
+          _c("tbody", [
+            _c("tr", [
+              _c(
+                "th",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { colspan: "2" }
+                },
+                [
+                  _vm._v(
+                    "Assets as at " +
+                      _vm._s(_vm.date.year) +
+                      "-" +
+                      _vm._s(_vm.date.month + 1) +
+                      "-" +
+                      _vm._s(_vm.date.day)
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", { attrs: { id: "start" } }, [
+              _c("th", { on: { click: _vm.togglecurrentassets } }, [
+                _vm._v("Current Assets")
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.Assets.current))])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c(
+                "div",
+                { staticStyle: { display: "none" }, attrs: { id: "c_assets" } },
+                _vm._l(_vm.currentassets, function(currentassets, index) {
+                  return _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        _vm._s(currentassets.ledger) +
+                          " - " +
+                          _vm._s(currentassets.amount)
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", { on: { click: _vm.togglefixedassets } }, [
+                _vm._v("Fixed Assets")
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.Assets.fixed))])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c(
+                "div",
+                { staticStyle: { display: "none" }, attrs: { id: "f_assets" } },
+                _vm._l(_vm.fixedassets, function(fixedassets, index) {
+                  return _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        _vm._s(fixedassets.ledger) +
+                          " - " +
+                          _vm._s(fixedassets.amount)
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "absolute" }, [
+          _c("p", { staticStyle: { "text-align": "left" } }, [
+            _vm._v("Total:"),
+            _c(
+              "span",
+              { staticStyle: { float: "right", "font-weight": "bold" } },
+              [_vm._v(" " + _vm._s(_vm.Assets.assets))]
+            )
+          ])
+        ])
+      ])
     ])
   ])
 }

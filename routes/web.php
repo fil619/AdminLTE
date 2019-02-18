@@ -36,4 +36,6 @@ Route::resource('/ledger', 'LedgerController');
 Route::get('/balancesheet/getliabsum', 'BalancesheetController@getliabsum');
 Route::get('/balancesheet/getdetails', 'BalancesheetController@getdetails');
 Route::resource('/balancesheet', 'BalancesheetController');
+
+Route::get('asset/sum', 'AssetController@sum');
 Route::resource('/asset', 'AssetController');

@@ -7,6 +7,26 @@ use App\Asset;
 
 class AssetController extends Controller
 {
+  public function index()
+  {
+    $fasset = Asset::where('assettype', 'Fixed Assets')->get();
+    $casset = Asset::where('assettype', 'Current Assets')->get();
+    return response()->json([
+        'Fixed'    => $fasset,
+        'Current' => $casset
+    ], 200);
+  }
+  public function sum()
+  {
+    $total = Asset::sum('amount');
+    $fasset = Asset::where('assettype', 'Fixed Assets')->sum('amount');
+    $casset = Asset::where('assettype', 'Current Assets')->sum('amount');
+    return response()->json([
+      'assets'    => $total,
+        'current'    => $casset,
+        'fixed' => $fasset
+    ], 200);
+  }
   public function store(Request $request)
   {
     $this->validate($request, [
