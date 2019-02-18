@@ -15,6 +15,15 @@ class LedgerController extends Controller
         'ledger'    => $ledger,
     ], 200);
   }
+
+  public function asset()
+  {
+    $asset = ledger::where('type', 'Assets')->get();
+    $asset = $asset->pluck('name');
+    return response()->json([
+      'asset'    => $asset,
+    ], 200);
+  }
   public function liab()
   {
     $liablity = ledger::where('type', 'Current Liabilities')->get();
@@ -26,6 +35,7 @@ class LedgerController extends Controller
       'loan'    => $loan,
     ], 200);
   }
+
   public function capital()
   {
     $capital = ledger::where('type', 'Capital Accounts')->get();

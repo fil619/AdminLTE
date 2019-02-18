@@ -41,7 +41,7 @@
                <md-option value="Direct Expense">Direct Expense</md-option>
                <md-option value="Indirect Expense">Indirect Expense</md-option>
                <md-option value="Capital Accounts">Capital Accounts</md-option>
-               <md-option value="Current Assets">Current Assets</md-option>
+               <md-option value="Assets">Assets</md-option>
                <md-option value="Current Liabilities">Current Liabilities</md-option>
                <md-option value="Loans">Loans</md-option>
                <md-option value="Fixed Assets">Fixed Assets</md-option>

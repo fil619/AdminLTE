@@ -1,36 +1,22 @@
 <template lang="html">
 <div class="Container">
   <md-tabs md-alignment="fixed">
-    <md-tab id="tab-home" md-label="Capital Account" >
-      <md-autocomplete v-model="selectedcapital" :md-options="capitallist" md-dense>
-        <label>Capital Account</label>
+    <md-tab id="tab-home" md-label="Assets" >
+
+      <md-autocomplete v-model="Asset" :md-options="assetlist" md-dense>
+        <label>Asset</label>
     </md-autocomplete>
+
+    <md-autocomplete v-model="AssetType" :md-options="assettypelist" md-dense>
+      <label>Type</label>
+    </md-autocomplete>
+
         <md-field>
         <label>Amount:</label>
         <md-input v-model="amount" type="number"></md-input>
         </md-field>
-        <md-button class="md-raised md-primary" @click="addCA">Submit</md-button>
-    </md-tab>
-    <md-tab id="tab-pages" md-label="Liabilities">
-      <md-autocomplete v-model="selectedliability" :md-options="liablist" md-dense>
-        <label>Liabilities</label>
-    </md-autocomplete>
-        <md-field>
-        <label>Amount:</label>
-        <md-input v-model="liabamount" type="number"></md-input>
-        </md-field>
-        <md-button class="md-raised md-primary" @click="addLi">Submit</md-button>
 
-    </md-tab>
-    <md-tab id="tab-posts" md-label="Loans">
-      <md-autocomplete v-model="selectedloan" :md-options="loan" md-dense>
-        <label>Liabilities</label>
-    </md-autocomplete>
-        <md-field>
-        <label>Amount:</label>
-        <md-input v-model="loanamount" type="number"></md-input>
-        </md-field>
-        <md-button class="md-raised md-primary" @click="addLoan">Submit</md-button>
+        <md-button class="md-raised md-primary" @click="addAsset">Submit</md-button>
     </md-tab>
   </md-tabs>
 </div>
@@ -42,79 +28,42 @@ import moment from 'moment'
 export default {
   mounted()
   {
-    this.getcapacc();
+    this.getAsset();
   },
   data: () => ({
-    ledger: null,
-    amount: null,
-    liabamount:null,
-    loanamount:null,
-    narration: null,
-    selectedcapital: null,
-    selectedliability: null,
-    selectedloan: null,
-    capitallist:[],
-    liablist:[],
-    loan:[]
+    AssetType: null,
+    Asset: null,
+    amount:null,
+    assettypelist:[
+      'Current Assets',
+       'Fixed Assets'
+    ],
+    assetlist:[]
 
 }),
 methods:{
-  addCA()
+  addAsset()
 {
   var todaydate = moment().format('YYYY/MM/DD');
-    axios.post('/balancesheet', {
-    type:'Capital Accounts',
-    ledger: this.selectedcapital,
+    axios.post('/asset', {
+    type:'Assets',
+    ledger: this.Asset,
+    assettype:this.AssetType,
     amount:this.amount,
     date: todaydate,
   })
       .then(response => {
-      this.selectedcapital='';
+      this.Asset='';
+      this.AssetType='';
       this.amount='';
 
       })
 },
-addLi()
+getAsset()
 {
-var todaydate = moment().format('YYYY/MM/DD');
-  axios.post('/balancesheet', {
-  type:'Current Liabilities',
-  ledger: this.selectedliability,
-  amount:this.liabamount,
-  date: todaydate,
-})
-    .then(response => {
-    this.selectedliability='';
-    this.liabamount='';
-
-    })
-},
-addLoan()
-{
-var todaydate = moment().format('YYYY/MM/DD');
-  axios.post('/balancesheet', {
-  type:'Loans',
-  ledger: this.selectedloan,
-  amount:this.loanamount,
-  date: todaydate,
-})
-    .then(response => {
-    this.selectedloan='';
-    this.loanamount='';
-
-    })
-},
-getcapacc()
-{
-  axios.get('ledger/capital').then(response => {
-  this.capitallist = response.data.capital  ;
+  axios.get('ledger/asset').then(response => {
+  this.assetlist = response.data.asset  ;
    })
-
-   axios.get('ledger/liab').then(response => {
-     this.liablist = response.data.liablity  ;
-     this.loan = response.data.loan  ;
-    })
-
 }
 }
 }

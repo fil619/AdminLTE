@@ -33981,7 +33981,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_full_calendar__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_notification___default.a);
 
-var routes = [{ name: 'dashboard', path: '/dashboard', component: __webpack_require__(246) }, { name: 'calendar', path: '/calendar', component: __webpack_require__(276) }, { name: 'directexpenses', path: '/directexpenses', component: __webpack_require__(281) }, { name: 'expenses', path: '/expenses', component: __webpack_require__(286) }, { name: 'ExpScreen', path: '/ExpScreen', component: __webpack_require__(291) }, { name: 'DisplayExpenses', path: '/DisplayExpenses', component: __webpack_require__(296) }, { name: 'Ledgers', path: '/Ledgers', component: __webpack_require__(299) }, { name: 'liabilities', path: '/liabilities', component: __webpack_require__(304) }];
+var routes = [{ name: 'dashboard', path: '/dashboard', component: __webpack_require__(246) }, { name: 'calendar', path: '/calendar', component: __webpack_require__(276) }, { name: 'directexpenses', path: '/directexpenses', component: __webpack_require__(281) }, { name: 'expenses', path: '/expenses', component: __webpack_require__(286) }, { name: 'ExpScreen', path: '/ExpScreen', component: __webpack_require__(291) }, { name: 'DisplayExpenses', path: '/DisplayExpenses', component: __webpack_require__(296) }, { name: 'Ledgers', path: '/Ledgers', component: __webpack_require__(299) }, { name: 'liabilities', path: '/liabilities', component: __webpack_require__(304) }, { name: 'assets', path: '/assets', component: __webpack_require__(342) }, { name: 'DisplayBalance', path: '/DisplayBalance', component: __webpack_require__(347) }];
 
 Vue.component('notification', __webpack_require__(309));
 Vue.component('DispDirect', __webpack_require__(314));
@@ -123406,8 +123406,8 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "md-option",
-                                  { attrs: { value: "Current Assets" } },
-                                  [_vm._v("Current Assets")]
+                                  { attrs: { value: "Assets" } },
+                                  [_vm._v("Assets")]
                                 ),
                                 _vm._v(" "),
                                 _c(
@@ -125238,6 +125238,672 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(343)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(345)
+/* template */
+var __vue_template__ = __webpack_require__(346)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3288e668"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/BalanceSheet/Assets.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3288e668", Component.options)
+  } else {
+    hotAPI.reload("data-v-3288e668", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(344);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("1e79f2f0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3288e668\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Assets.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3288e668\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Assets.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-autocomplete + strong[data-v-3288e668] {\r\n  margin-top: 36px;\r\n  display: block;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 345 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.getAsset();
+  },
+
+  data: function data() {
+    return {
+      AssetType: null,
+      Asset: null,
+      amount: null,
+      assettypelist: ['Current Assets', 'Fixed Assets'],
+      assetlist: []
+
+    };
+  },
+  methods: {
+    addAsset: function addAsset() {
+      var _this = this;
+
+      var todaydate = __WEBPACK_IMPORTED_MODULE_0_moment___default.a().format('YYYY/MM/DD');
+      axios.post('/asset', {
+        type: 'Assets',
+        ledger: this.Asset,
+        assettype: this.AssetType,
+        amount: this.amount,
+        date: todaydate
+      }).then(function (response) {
+        _this.Asset = '';
+        _this.AssetType = '';
+        _this.amount = '';
+      });
+    },
+    getAsset: function getAsset() {
+      var _this2 = this;
+
+      axios.get('ledger/asset').then(function (response) {
+        _this2.assetlist = response.data.asset;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "Container" },
+    [
+      _c(
+        "md-tabs",
+        { attrs: { "md-alignment": "fixed" } },
+        [
+          _c(
+            "md-tab",
+            { attrs: { id: "tab-home", "md-label": "Assets" } },
+            [
+              _c(
+                "md-autocomplete",
+                {
+                  attrs: { "md-options": _vm.assetlist, "md-dense": "" },
+                  model: {
+                    value: _vm.Asset,
+                    callback: function($$v) {
+                      _vm.Asset = $$v
+                    },
+                    expression: "Asset"
+                  }
+                },
+                [_c("label", [_vm._v("Asset")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-autocomplete",
+                {
+                  attrs: { "md-options": _vm.assettypelist, "md-dense": "" },
+                  model: {
+                    value: _vm.AssetType,
+                    callback: function($$v) {
+                      _vm.AssetType = $$v
+                    },
+                    expression: "AssetType"
+                  }
+                },
+                [_c("label", [_vm._v("Type")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-field",
+                [
+                  _c("label", [_vm._v("Amount:")]),
+                  _vm._v(" "),
+                  _c("md-input", {
+                    attrs: { type: "number" },
+                    model: {
+                      value: _vm.amount,
+                      callback: function($$v) {
+                        _vm.amount = $$v
+                      },
+                      expression: "amount"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: { click: _vm.addAsset }
+                },
+                [_vm._v("Submit")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3288e668", module.exports)
+  }
+}
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(348)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(350)
+/* template */
+var __vue_template__ = __webpack_require__(351)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5c0b5bc2"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/BalanceSheet/DisplayBalance.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5c0b5bc2", Component.options)
+  } else {
+    hotAPI.reload("data-v-5c0b5bc2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(349);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("7a418134", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5c0b5bc2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DisplayBalance.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5c0b5bc2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DisplayBalance.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.col-md-6[data-v-5c0b5bc2]\r\n{\r\n  height: 80vh;\r\n  border: 2px solid black;\n}\ntr[data-v-5c0b5bc2]\r\n{\r\n  font-size: 15px;\r\n  color:black;\n}\ndiv.absolute[data-v-5c0b5bc2] {\r\n  position: absolute;\r\n  width: 95%;\r\n  bottom: 0px;\r\n  border-top:  1px solid black;\r\n  font-size: 25px;\r\n  color:black;\n}\nth[data-v-5c0b5bc2]:hover\r\n{\r\n  cursor: pointer;\n}\nli[data-v-5c0b5bc2]{\r\n  font-size: 12px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 350 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            liabilities: {
+                Liabilities: '',
+                capital: '',
+                Loan: '',
+                Current: ''
+            },
+            capital: {
+                name: '',
+                amount: ''
+            },
+            loan: {
+                name: '',
+                amount: ''
+            },
+            current: {
+                name: '',
+                amount: ''
+            },
+            date: {
+                year: '',
+                month: '',
+                day: ''
+            }
+        };
+    },
+    mounted: function mounted() {
+        this.getliabilities();
+        this.liabdetail();
+
+        var day = new Date();
+        this.date.year = day.getFullYear();
+        this.date.month = day.getMonth();
+        this.date.day = day.getDate();
+    },
+
+    computed: {},
+    methods: {
+        liabdetail: function liabdetail() {
+            var _this = this;
+
+            axios.get('balancesheet/getdetails').then(function (response) {
+                _this.capital = response.data.capital;
+                _this.loan = response.data.Loan;
+                _this.current = response.data.Current;
+            });
+        },
+        getliabilities: function getliabilities() {
+            var _this2 = this;
+
+            axios.get('/balancesheet/getliabsum').then(function (response) {
+                _this2.liabilities = response.data;
+            });
+        },
+        togglediv: function togglediv() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        },
+        toggleloan: function toggleloan() {
+            var x = document.getElementById("loandiv");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        },
+        toggleCur: function toggleCur() {
+            var x = document.getElementById("curdiv");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("table", { staticClass: "table table-condensed" }, [
+          _c("tbody", [
+            _c("tr", [
+              _c(
+                "th",
+                {
+                  staticStyle: { "text-align": "center" },
+                  attrs: { colspan: "2" }
+                },
+                [
+                  _vm._v(
+                    "Liabilities as at " +
+                      _vm._s(_vm.date.year) +
+                      "-" +
+                      _vm._s(_vm.date.month + 1) +
+                      "-" +
+                      _vm._s(_vm.date.day)
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", { attrs: { id: "start" } }, [
+              _c("th", { on: { click: _vm.togglediv } }, [
+                _vm._v("Capital Account")
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.liabilities.capital))])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c(
+                "div",
+                { staticStyle: { display: "none" }, attrs: { id: "myDIV" } },
+                _vm._l(_vm.capital, function(capital, index) {
+                  return _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        _vm._s(capital.ledger) + " - " + _vm._s(capital.amount)
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", { on: { click: _vm.toggleloan } }, [_vm._v("Loan")]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.liabilities.Loan))])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c(
+                "div",
+                { staticStyle: { display: "none" }, attrs: { id: "loandiv" } },
+                _vm._l(_vm.loan, function(loan, index) {
+                  return _c("ul", [
+                    _c("li", [
+                      _vm._v(_vm._s(loan.ledger) + " - " + _vm._s(loan.amount))
+                    ])
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th", { on: { click: _vm.toggleCur } }, [
+                _vm._v("Current Liabilities")
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.liabilities.Current))])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c(
+                "div",
+                { staticStyle: { display: "none" }, attrs: { id: "curdiv" } },
+                _vm._l(_vm.current, function(current, index) {
+                  return _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        _vm._s(current.ledger) + " - " + _vm._s(current.amount)
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "absolute" }, [
+          _c("p", { staticStyle: { "text-align": "left" } }, [
+            _vm._v("Total:"),
+            _c(
+              "span",
+              { staticStyle: { float: "right", "font-weight": "bold" } },
+              [_vm._v(" " + _vm._s(_vm.liabilities.Liabilities))]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "col-md-6",
+        on: {
+          keydown: function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
+            ) {
+              return null
+            }
+            return _vm.selected($event)
+          }
+        }
+      })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5c0b5bc2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

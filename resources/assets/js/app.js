@@ -36,6 +36,8 @@ let routes = [
     { name: 'DisplayExpenses', path: '/DisplayExpenses', component: require('./components/Expenses/DisplayExpenses.vue') },
     { name: 'Ledgers', path: '/Ledgers', component: require('./components/Ledgers.vue') },
     { name: 'liabilities', path: '/liabilities', component: require('./components/BalanceSheet/Liabilities.vue') },
+    { name: 'assets', path: '/assets', component: require('./components/BalanceSheet/Assets.vue') },
+    { name: 'DisplayBalance', path: '/DisplayBalance', component: require('./components/BalanceSheet/DisplayBalance.vue') },
 ]
 
 Vue.component('notification', require('./components/Notification.vue'));

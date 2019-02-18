@@ -60,7 +60,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <router-link to="/DisplayExpenses" class="nav-link">
+                            <router-link to="/DisplayBalance" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i><p>Display</p>
                             </router-link>
                         </li>
@@ -70,7 +70,7 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                        <router-link to="expenses" class="nav-link">
+                        <router-link to="assets" class="nav-link">
                             <i class="nav-icon fas fa-key"></i><p>Add Assets</p>
                         </router-link>
                       </li>
