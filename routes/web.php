@@ -26,6 +26,10 @@ Route::get('setexpense/getiexpenses', 'ExpenseController@getiexpenses');
 Route::get('setexpense/getexpenses', 'ExpenseController@getexpenses');
 Route::resource('/setexpense', 'ExpenseController');
 
+Route::get('/ledger/liab', 'LedgerController@liab');
+Route::get('/ledger/capital', 'LedgerController@capital');
 Route::get('/ledger/direct', 'LedgerController@direct');
 Route::get('/ledger/indirect', 'LedgerController@indirect');
 Route::resource('/ledger', 'LedgerController');
+
+Route::resource('/balancesheet', 'BalancesheetController');

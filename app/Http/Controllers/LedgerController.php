@@ -15,6 +15,25 @@ class LedgerController extends Controller
         'ledger'    => $ledger,
     ], 200);
   }
+  public function liab()
+  {
+    $liablity = ledger::where('type', 'Current Liabilities')->get();
+    $loan = ledger::where('type', 'Loans')->get();
+    $liablity = $liablity->pluck('name');
+    $loan = $loan->pluck('name');
+    return response()->json([
+      'liablity'    => $liablity,
+      'loan'    => $loan,
+    ], 200);
+  }
+  public function capital()
+  {
+    $capital = ledger::where('type', 'Capital Accounts')->get();
+    $capital = $capital->pluck('name');
+    return response()->json([
+        'capital'    => $capital,
+    ], 200);
+  }
   public function direct()
   {
     $ledger = ledger::where('type', 'Direct Expense')->get();

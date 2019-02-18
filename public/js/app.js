@@ -33934,7 +33934,7 @@ function withParams(paramsOrClosure, maybeValidator) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(177);
-module.exports = __webpack_require__(319);
+module.exports = __webpack_require__(324);
 
 
 /***/ }),
@@ -33981,11 +33981,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_full_calendar__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_notification___default.a);
 
-var routes = [{ name: 'dashboard', path: '/dashboard', component: __webpack_require__(246) }, { name: 'calendar', path: '/calendar', component: __webpack_require__(276) }, { name: 'directexpenses', path: '/directexpenses', component: __webpack_require__(281) }, { name: 'expenses', path: '/expenses', component: __webpack_require__(286) }, { name: 'ExpScreen', path: '/ExpScreen', component: __webpack_require__(291) }, { name: 'DisplayExpenses', path: '/DisplayExpenses', component: __webpack_require__(296) }, { name: 'Ledgers', path: '/Ledgers', component: __webpack_require__(299) }];
+var routes = [{ name: 'dashboard', path: '/dashboard', component: __webpack_require__(246) }, { name: 'calendar', path: '/calendar', component: __webpack_require__(276) }, { name: 'directexpenses', path: '/directexpenses', component: __webpack_require__(281) }, { name: 'expenses', path: '/expenses', component: __webpack_require__(286) }, { name: 'ExpScreen', path: '/ExpScreen', component: __webpack_require__(291) }, { name: 'DisplayExpenses', path: '/DisplayExpenses', component: __webpack_require__(296) }, { name: 'Ledgers', path: '/Ledgers', component: __webpack_require__(299) }, { name: 'liabilities', path: '/liabilities', component: __webpack_require__(304) }];
 
-Vue.component('notification', __webpack_require__(304));
-Vue.component('DispDirect', __webpack_require__(309));
-Vue.component('DispInDirect', __webpack_require__(314));
+Vue.component('notification', __webpack_require__(309));
+Vue.component('DispDirect', __webpack_require__(314));
+Vue.component('DispInDirect', __webpack_require__(319));
 
 var router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
   mode: 'history',
@@ -123595,6 +123595,407 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
+var __vue_scopeId__ = "data-v-4fd515d6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/BalanceSheet/Liabilities.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4fd515d6", Component.options)
+  } else {
+    hotAPI.reload("data-v-4fd515d6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 305 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(306);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("4af33983", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fd515d6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Liabilities.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fd515d6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Liabilities.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-autocomplete + strong[data-v-4fd515d6] {\r\n  margin-top: 36px;\r\n  display: block;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 307 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.getcapacc();
+  },
+
+  data: function data() {
+    return {
+      ledger: null,
+      amount: null,
+      liabamount: null,
+      loanamount: null,
+      narration: null,
+      selectedcapital: null,
+      selectedliability: null,
+      selectedloan: null,
+      capitallist: [],
+      liablist: [],
+      loan: []
+
+    };
+  },
+  methods: {
+    addCA: function addCA() {
+      var _this = this;
+
+      var todaydate = __WEBPACK_IMPORTED_MODULE_0_moment___default.a().format('YYYY/MM/DD');
+      axios.post('/balancesheet', {
+        type: 'Capital Accounts',
+        ledger: this.selectedcapital,
+        amount: this.amount,
+        date: todaydate
+      }).then(function (response) {
+        _this.selectedcapital = '';
+        _this.amount = '';
+      });
+    },
+    addLi: function addLi() {
+      var _this2 = this;
+
+      var todaydate = __WEBPACK_IMPORTED_MODULE_0_moment___default.a().format('YYYY/MM/DD');
+      axios.post('/balancesheet', {
+        type: 'Current Liabilities',
+        ledger: this.selectedliability,
+        amount: this.liabamount,
+        date: todaydate
+      }).then(function (response) {
+        _this2.selectedliability = '';
+        _this2.liabamount = '';
+      });
+    },
+    addLoan: function addLoan() {
+      var _this3 = this;
+
+      var todaydate = __WEBPACK_IMPORTED_MODULE_0_moment___default.a().format('YYYY/MM/DD');
+      axios.post('/balancesheet', {
+        type: 'Loans',
+        ledger: this.selectedloan,
+        amount: this.loanamount,
+        date: todaydate
+      }).then(function (response) {
+        _this3.selectedloan = '';
+        _this3.loanamount = '';
+      });
+    },
+    getcapacc: function getcapacc() {
+      var _this4 = this;
+
+      axios.get('ledger/capital').then(function (response) {
+        _this4.capitallist = response.data.capital;
+      });
+
+      axios.get('ledger/liab').then(function (response) {
+        _this4.liablist = response.data.liablity;
+        _this4.loan = response.data.loan;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "Container" },
+    [
+      _c(
+        "md-tabs",
+        { attrs: { "md-alignment": "fixed" } },
+        [
+          _c(
+            "md-tab",
+            { attrs: { id: "tab-home", "md-label": "Capital Account" } },
+            [
+              _c(
+                "md-autocomplete",
+                {
+                  attrs: { "md-options": _vm.capitallist, "md-dense": "" },
+                  model: {
+                    value: _vm.selectedcapital,
+                    callback: function($$v) {
+                      _vm.selectedcapital = $$v
+                    },
+                    expression: "selectedcapital"
+                  }
+                },
+                [_c("label", [_vm._v("Capital Account")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-field",
+                [
+                  _c("label", [_vm._v("Amount:")]),
+                  _vm._v(" "),
+                  _c("md-input", {
+                    attrs: { type: "number" },
+                    model: {
+                      value: _vm.amount,
+                      callback: function($$v) {
+                        _vm.amount = $$v
+                      },
+                      expression: "amount"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: { click: _vm.addCA }
+                },
+                [_vm._v("Submit")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-tab",
+            { attrs: { id: "tab-pages", "md-label": "Liabilities" } },
+            [
+              _c(
+                "md-autocomplete",
+                {
+                  attrs: { "md-options": _vm.liablist, "md-dense": "" },
+                  model: {
+                    value: _vm.selectedliability,
+                    callback: function($$v) {
+                      _vm.selectedliability = $$v
+                    },
+                    expression: "selectedliability"
+                  }
+                },
+                [_c("label", [_vm._v("Liabilities")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-field",
+                [
+                  _c("label", [_vm._v("Amount:")]),
+                  _vm._v(" "),
+                  _c("md-input", {
+                    attrs: { type: "number" },
+                    model: {
+                      value: _vm.liabamount,
+                      callback: function($$v) {
+                        _vm.liabamount = $$v
+                      },
+                      expression: "liabamount"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: { click: _vm.addLi }
+                },
+                [_vm._v("Submit")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-tab",
+            { attrs: { id: "tab-posts", "md-label": "Loans" } },
+            [
+              _c(
+                "md-autocomplete",
+                {
+                  attrs: { "md-options": _vm.loan, "md-dense": "" },
+                  model: {
+                    value: _vm.selectedloan,
+                    callback: function($$v) {
+                      _vm.selectedloan = $$v
+                    },
+                    expression: "selectedloan"
+                  }
+                },
+                [_c("label", [_vm._v("Liabilities")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-field",
+                [
+                  _c("label", [_vm._v("Amount:")]),
+                  _vm._v(" "),
+                  _c("md-input", {
+                    attrs: { type: "number" },
+                    model: {
+                      value: _vm.loanamount,
+                      callback: function($$v) {
+                        _vm.loanamount = $$v
+                      },
+                      expression: "loanamount"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: { click: _vm.addLoan }
+                },
+                [_vm._v("Submit")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4fd515d6", module.exports)
+  }
+}
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(310)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(312)
+/* template */
+var __vue_template__ = __webpack_require__(313)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
 var __vue_scopeId__ = "data-v-66002d22"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
@@ -123628,13 +124029,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 305 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(306);
+var content = __webpack_require__(311);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -123654,7 +124055,7 @@ if(false) {
 }
 
 /***/ }),
-/* 306 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -123668,7 +124069,7 @@ exports.push([module.i, "\n#NotBell[data-v-66002d22]{\n  margin-bottom: 10px;\n 
 
 
 /***/ }),
-/* 307 */
+/* 312 */
 /***/ (function(module, exports) {
 
 //
@@ -123731,7 +124132,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 308 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -123780,19 +124181,19 @@ if (false) {
 }
 
 /***/ }),
-/* 309 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(310)
+  __webpack_require__(315)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(312)
+var __vue_script__ = __webpack_require__(317)
 /* template */
-var __vue_template__ = __webpack_require__(313)
+var __vue_template__ = __webpack_require__(318)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -123831,13 +124232,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 310 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(311);
+var content = __webpack_require__(316);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -123857,7 +124258,7 @@ if(false) {
 }
 
 /***/ }),
-/* 311 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -123871,7 +124272,7 @@ exports.push([module.i, "\n#DisplayDirect[data-v-61bb3ad8]\n{\n  /* margin-botto
 
 
 /***/ }),
-/* 312 */
+/* 317 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124021,7 +124422,7 @@ var searchByName = function searchByName(items, term) {
 });
 
 /***/ }),
-/* 313 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -124313,19 +124714,19 @@ if (false) {
 }
 
 /***/ }),
-/* 314 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(315)
+  __webpack_require__(320)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(317)
+var __vue_script__ = __webpack_require__(322)
 /* template */
-var __vue_template__ = __webpack_require__(318)
+var __vue_template__ = __webpack_require__(323)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -124364,13 +124765,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 315 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(316);
+var content = __webpack_require__(321);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -124390,7 +124791,7 @@ if(false) {
 }
 
 /***/ }),
-/* 316 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -124404,7 +124805,7 @@ exports.push([module.i, "\n.notifications[data-v-9ce03fc6] {\n  margin-bottom:5v
 
 
 /***/ }),
-/* 317 */
+/* 322 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124547,7 +124948,7 @@ var searchByName = function searchByName(items, term) {
 });
 
 /***/ }),
-/* 318 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -124833,7 +125234,7 @@ if (false) {
 }
 
 /***/ }),
-/* 319 */
+/* 324 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

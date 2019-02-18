@@ -43,9 +43,37 @@
                                 <i class="nav-icon fas fa-users"></i><p>Add Direct Expenses</p>
                             </router-link>
                         </li>
+                        <li class="nav-item">
                         <router-link to="expenses" class="nav-link">
                             <i class="nav-icon fas fa-key"></i><p>Add Indirect Expenses</p>
                         </router-link>
+                      </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-users"></i>
+                        <p>
+                            Balance Sheet
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <router-link to="/DisplayExpenses" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i><p>Display</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/liabilities" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i><p>Add Liabilities</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                        <router-link to="expenses" class="nav-link">
+                            <i class="nav-icon fas fa-key"></i><p>Add Assets</p>
+                        </router-link>
+                      </li>
                     </ul>
                 </li>
                 <li class="nav-item">
