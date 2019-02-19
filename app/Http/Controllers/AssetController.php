@@ -38,12 +38,23 @@ class AssetController extends Controller
       'ledger'        => request('ledger'),
       'assettype'        => request('assettype'),
       'amount'      => request('amount'),
-      'date'        => request('date'),
     ]);
 
     return response()->json([
         'Asset'    => $Asset,
         'message' => 'Success'
     ], 200);
+  }
+  public function addcash(Request $request)
+  {
+    $cash = $request->amount ;
+    $Asset = Asset::where('ledger', 'Cash')->increment('amount',$cash );
+    return 'Success';
+  }
+  public function subcash(Request $request)
+  {
+    $cash = $request->amount ;
+    $Asset = Asset::where('ledger', 'Cash')->decrement('amount',$cash );
+    return 'Success';
   }
 }

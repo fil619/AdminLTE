@@ -2,15 +2,10 @@
 <div class="Container">
   <md-tabs md-alignment="fixed">
     <md-tab id="tab-home" md-label="Assets" >
-
-      <md-autocomplete v-model="Asset" :md-options="assetlist" md-dense>
-        <label>Asset</label>
-    </md-autocomplete>
-
-    <md-autocomplete v-model="AssetType" :md-options="assettypelist" md-dense>
-      <label>Type</label>
-    </md-autocomplete>
-
+    <md-field>
+    <label>Name:</label>
+    <md-input v-model="Asset"></md-input>
+    </md-field>
         <md-field>
         <label>Amount:</label>
         <md-input v-model="amount" type="number"></md-input>
@@ -28,16 +23,11 @@ import moment from 'moment'
 export default {
   mounted()
   {
-    this.getAsset();
   },
   data: () => ({
     AssetType: null,
     Asset: null,
     amount:null,
-    assettypelist:[
-      'Current Assets',
-       'Fixed Assets'
-    ],
     assetlist:[]
 
 }),
@@ -48,23 +38,24 @@ methods:{
     axios.post('/asset', {
     type:'Assets',
     ledger: this.Asset,
-    assettype:this.AssetType,
+    assettype:'Current Assets' ,
     amount:this.amount,
-    date: todaydate,
   })
       .then(response => {
-      this.Asset='';
-      this.AssetType='';
-      this.amount='';
-
+      // this.Asset='';
+      // this.AssetType='';
+      // this.amount='';
       })
+
+      axios.post('/asset/subcash',{
+        amount: this.amount,
+      })
+          .then(response => {
+            this.Asset='';
+            this.AssetType='';
+            this.amount='';
+          })
 },
-getAsset()
-{
-  axios.get('ledger/asset').then(response => {
-  this.assetlist = response.data.asset  ;
-   })
-}
 }
 }
 </script>

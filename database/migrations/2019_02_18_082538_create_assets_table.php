@@ -19,7 +19,6 @@ class CreateAssetsTable extends Migration
             $table->string('ledger');
             $table->string('assettype');
             $table->integer('amount');
-            $table->date('date');
             $table->timestamps();
         });
     }

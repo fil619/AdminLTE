@@ -10,7 +10,7 @@
               <th colspan="2" style="text-align: center;">Liabilities as at {{date.year}}-{{date.month+1}}-{{date.day}}</th>
             </tr>
             <tr id='start'>
-              <th @click="togglediv" >Capital Account</th>
+              <th @click="togglediv" >Investment</th>
               <td>{{liabilities.capital}}</td>
             </tr>
             <tr>
@@ -62,17 +62,6 @@
               <div id="c_assets" style="display:none">
                 <ul v-for="(currentassets , index ) in currentassets">
                   <li>{{currentassets.ledger}} - {{currentassets.amount}}</li>
-                </ul>
-              </div>
-            </tr>
-            <tr>
-              <th @click="togglefixedassets">Fixed Assets</th>
-              <td>{{Assets.fixed}}</td>
-            </tr>
-            <tr>
-              <div id="f_assets" style="display:none">
-                <ul v-for="(fixedassets , index ) in fixedassets">
-                  <li>{{fixedassets.ledger}} - {{fixedassets.amount}}</li>
                 </ul>
               </div>
             </tr>
@@ -214,16 +203,6 @@ export default
 
         }
     },
-    togglefixedassets()
-    {
-        var x = document.getElementById("f_assets");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-
-        }
-    }
   }
 }
 </script>

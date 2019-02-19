@@ -37,5 +37,7 @@ Route::get('/balancesheet/getliabsum', 'BalancesheetController@getliabsum');
 Route::get('/balancesheet/getdetails', 'BalancesheetController@getdetails');
 Route::resource('/balancesheet', 'BalancesheetController');
 
+Route::post('asset/subcash', 'AssetController@subcash');
+Route::post('asset/addcash', 'AssetController@addcash');
 Route::get('asset/sum', 'AssetController@sum');
 Route::resource('/asset', 'AssetController');

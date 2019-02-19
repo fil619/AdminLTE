@@ -123708,32 +123708,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    this.getcapacc();
-  },
+  mounted: function mounted() {},
 
   data: function data() {
     return {
       ledger: null,
       amount: null,
-      liabamount: null,
       loanamount: null,
       narration: null,
       selectedcapital: null,
-      selectedliability: null,
-      selectedloan: null,
-      capitallist: [],
-      liablist: [],
-      loan: []
+      selectedloan: null
 
     };
   },
@@ -123747,27 +123735,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         ledger: this.selectedcapital,
         amount: this.amount,
         date: todaydate
+      }).then(function (response) {});
+
+      axios.post('/asset/addcash', {
+        amount: this.amount
       }).then(function (response) {
         _this.selectedcapital = '';
         _this.amount = '';
       });
     },
-    addLi: function addLi() {
-      var _this2 = this;
-
-      var todaydate = __WEBPACK_IMPORTED_MODULE_0_moment___default.a().format('YYYY/MM/DD');
-      axios.post('/balancesheet', {
-        type: 'Current Liabilities',
-        ledger: this.selectedliability,
-        amount: this.liabamount,
-        date: todaydate
-      }).then(function (response) {
-        _this2.selectedliability = '';
-        _this2.liabamount = '';
-      });
-    },
     addLoan: function addLoan() {
-      var _this3 = this;
+      var _this2 = this;
 
       var todaydate = __WEBPACK_IMPORTED_MODULE_0_moment___default.a().format('YYYY/MM/DD');
       axios.post('/balancesheet', {
@@ -123775,21 +123753,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         ledger: this.selectedloan,
         amount: this.loanamount,
         date: todaydate
+      }).then(function (response) {});
+      axios.post('/asset/addcash', {
+        amount: this.loanamount
       }).then(function (response) {
-        _this3.selectedloan = '';
-        _this3.loanamount = '';
-      });
-    },
-    getcapacc: function getcapacc() {
-      var _this4 = this;
-
-      axios.get('ledger/capital').then(function (response) {
-        _this4.capitallist = response.data.capital;
-      });
-
-      axios.get('ledger/liab').then(function (response) {
-        _this4.liablist = response.data.liablity;
-        _this4.loan = response.data.loan;
+        _this2.selectedcapital = '';
+        _this2.loanamount = '';
       });
     }
   }
@@ -123813,21 +123782,24 @@ var render = function() {
         [
           _c(
             "md-tab",
-            { attrs: { id: "tab-home", "md-label": "Capital Account" } },
+            { attrs: { id: "tab-home", "md-label": "Investment" } },
             [
               _c(
-                "md-autocomplete",
-                {
-                  attrs: { "md-options": _vm.capitallist, "md-dense": "" },
-                  model: {
-                    value: _vm.selectedcapital,
-                    callback: function($$v) {
-                      _vm.selectedcapital = $$v
-                    },
-                    expression: "selectedcapital"
-                  }
-                },
-                [_c("label", [_vm._v("Capital Account")])]
+                "md-field",
+                [
+                  _c("label", [_vm._v("Name:")]),
+                  _vm._v(" "),
+                  _c("md-input", {
+                    model: {
+                      value: _vm.selectedcapital,
+                      callback: function($$v) {
+                        _vm.selectedcapital = $$v
+                      },
+                      expression: "selectedcapital"
+                    }
+                  })
+                ],
+                1
               ),
               _vm._v(" "),
               _c(
@@ -123863,71 +123835,24 @@ var render = function() {
           _vm._v(" "),
           _c(
             "md-tab",
-            { attrs: { id: "tab-pages", "md-label": "Liabilities" } },
+            { attrs: { id: "tab-posts", "md-label": "Loans" } },
             [
-              _c(
-                "md-autocomplete",
-                {
-                  attrs: { "md-options": _vm.liablist, "md-dense": "" },
-                  model: {
-                    value: _vm.selectedliability,
-                    callback: function($$v) {
-                      _vm.selectedliability = $$v
-                    },
-                    expression: "selectedliability"
-                  }
-                },
-                [_c("label", [_vm._v("Liabilities")])]
-              ),
-              _vm._v(" "),
               _c(
                 "md-field",
                 [
-                  _c("label", [_vm._v("Amount:")]),
+                  _c("label", [_vm._v("Name:")]),
                   _vm._v(" "),
                   _c("md-input", {
-                    attrs: { type: "number" },
                     model: {
-                      value: _vm.liabamount,
+                      value: _vm.selectedloan,
                       callback: function($$v) {
-                        _vm.liabamount = $$v
+                        _vm.selectedloan = $$v
                       },
-                      expression: "liabamount"
+                      expression: "selectedloan"
                     }
                   })
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-raised md-primary",
-                  on: { click: _vm.addLi }
-                },
-                [_vm._v("Submit")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "md-tab",
-            { attrs: { id: "tab-posts", "md-label": "Loans" } },
-            [
-              _c(
-                "md-autocomplete",
-                {
-                  attrs: { "md-options": _vm.loan, "md-dense": "" },
-                  model: {
-                    value: _vm.selectedloan,
-                    callback: function($$v) {
-                      _vm.selectedloan = $$v
-                    },
-                    expression: "selectedloan"
-                  }
-                },
-                [_c("label", [_vm._v("Liabilities")])]
               ),
               _vm._v(" "),
               _c(
@@ -125374,25 +125299,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    this.getAsset();
-  },
+  mounted: function mounted() {},
 
   data: function data() {
     return {
       AssetType: null,
       Asset: null,
       amount: null,
-      assettypelist: ['Current Assets', 'Fixed Assets'],
       assetlist: []
 
     };
@@ -125405,20 +125322,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post('/asset', {
         type: 'Assets',
         ledger: this.Asset,
-        assettype: this.AssetType,
-        amount: this.amount,
-        date: todaydate
+        assettype: 'Current Assets',
+        amount: this.amount
+      }).then(function (response) {
+        // this.Asset='';
+        // this.AssetType='';
+        // this.amount='';
+      });
+
+      axios.post('/asset/subcash', {
+        amount: this.amount
       }).then(function (response) {
         _this.Asset = '';
         _this.AssetType = '';
         _this.amount = '';
-      });
-    },
-    getAsset: function getAsset() {
-      var _this2 = this;
-
-      axios.get('ledger/asset').then(function (response) {
-        _this2.assetlist = response.data.asset;
       });
     }
   }
@@ -125445,33 +125362,21 @@ var render = function() {
             { attrs: { id: "tab-home", "md-label": "Assets" } },
             [
               _c(
-                "md-autocomplete",
-                {
-                  attrs: { "md-options": _vm.assetlist, "md-dense": "" },
-                  model: {
-                    value: _vm.Asset,
-                    callback: function($$v) {
-                      _vm.Asset = $$v
-                    },
-                    expression: "Asset"
-                  }
-                },
-                [_c("label", [_vm._v("Asset")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "md-autocomplete",
-                {
-                  attrs: { "md-options": _vm.assettypelist, "md-dense": "" },
-                  model: {
-                    value: _vm.AssetType,
-                    callback: function($$v) {
-                      _vm.AssetType = $$v
-                    },
-                    expression: "AssetType"
-                  }
-                },
-                [_c("label", [_vm._v("Type")])]
+                "md-field",
+                [
+                  _c("label", [_vm._v("Name:")]),
+                  _vm._v(" "),
+                  _c("md-input", {
+                    model: {
+                      value: _vm.Asset,
+                      callback: function($$v) {
+                        _vm.Asset = $$v
+                      },
+                      expression: "Asset"
+                    }
+                  })
+                ],
+                1
               ),
               _vm._v(" "),
               _c(
@@ -125694,17 +125599,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -125817,14 +125711,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 x.style.display = "none";
             }
-        },
-        togglefixedassets: function togglefixedassets() {
-            var x = document.getElementById("f_assets");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
         }
     }
 });
@@ -125866,7 +125752,7 @@ var render = function() {
             _vm._v(" "),
             _c("tr", { attrs: { id: "start" } }, [
               _c("th", { on: { click: _vm.togglediv } }, [
-                _vm._v("Capital Account")
+                _vm._v("Investment")
               ]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.liabilities.capital))])
@@ -125991,33 +125877,6 @@ var render = function() {
                         _vm._s(currentassets.ledger) +
                           " - " +
                           _vm._s(currentassets.amount)
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("th", { on: { click: _vm.togglefixedassets } }, [
-                _vm._v("Fixed Assets")
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.Assets.fixed))])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "div",
-                { staticStyle: { display: "none" }, attrs: { id: "f_assets" } },
-                _vm._l(_vm.fixedassets, function(fixedassets, index) {
-                  return _c("ul", [
-                    _c("li", [
-                      _vm._v(
-                        _vm._s(fixedassets.ledger) +
-                          " - " +
-                          _vm._s(fixedassets.amount)
                       )
                     ])
                   ])
