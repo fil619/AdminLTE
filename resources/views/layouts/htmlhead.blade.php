@@ -5,6 +5,5 @@
 
     <title>LaraStart - @yield('htmlheader') </title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <link rel="stylesheet" href="{{ url('/css/app.css') }}">
 </head>

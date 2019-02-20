@@ -76,6 +76,9 @@
                       </li>
                     </ul>
                 </li>
+                <router-link to="/profitloss" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i><p>Profit & Loss</p>
+                </router-link>
                 <li class="nav-item">
                     <router-link to="/calendar" class="nav-link">
                         <i class="material-icons" style="display:inline-flex ; vertical-align:middle">date_range</i><p>Calendar</p>

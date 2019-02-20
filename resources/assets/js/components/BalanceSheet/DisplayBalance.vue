@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="container">
     <br>
-    <div class="row">
+    <div class="row" style="background:white">
       <div class="col-md-6">
 
         <table class="table table-condensed">

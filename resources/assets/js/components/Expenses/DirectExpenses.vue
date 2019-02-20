@@ -7,17 +7,23 @@
 </md-card-header>
 
 <md-card-content>
-<md-autocomplete v-model="selectedledger" :md-options="ledgers" md-dense>
-  <label>Type</label>
 
-  <template slot="md-autocomplete-item" slot-scope="{ item, term }">
-    <md-highlight-text :md-term="term">{{ item }}</md-highlight-text>
-  </template>
+<v-autocomplete
+  v-model="selectedledger"
+  :items="ledgers"
+  persistent-hint
+>
+  <v-slide-x-reverse-transition
+    slot="append-outer"
+    mode="out-in"
+  >
 
-  <template slot="md-autocomplete-empty" slot-scope="{ term }">
-    No Ledgers matching "{{ term }}" were found. <a @click="noop()">Create a new</a> one!
-  </template>
-</md-autocomplete>
+  </v-slide-x-reverse-transition>
+</v-autocomplete>
+
+
+
+
 <md-field>
    <label>Amount</label>
    <md-input v-model="amount" type="number"></md-input>
@@ -93,16 +99,11 @@ import moment from 'moment'
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import "~vue-material/dist/theme/engine.scss";
-
-  .md-autocomplete + strong {
-    margin-top: 36px;
-    display: block;
-  }
-  .container-fluid
+  .v-menu__content
   {
-flex: auto;
-float: left;
+    top:30px !important;
+    left:0px !important;
   }
 </style>

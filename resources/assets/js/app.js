@@ -12,12 +12,15 @@ window.Vue = require('vue');
 
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
+import 'vuetify/dist/vuetify.min.css';
 
 import VueMaterial from 'vue-material'
 import FullCalendar from 'vue-full-calendar'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import Vuelidate from 'vuelidate'
+import Vuetify from 'vuetify'
+
 
 
 Vue.use(Vuelidate)
@@ -25,6 +28,7 @@ Vue.use(VueMaterial)
 Vue.use(FullCalendar)
 Vue.use(VueRouter)
 Vue.use(Notifications)
+Vue.use(Vuetify)
 
 
 let routes = [
@@ -38,6 +42,7 @@ let routes = [
     { name: 'liabilities', path: '/liabilities', component: require('./components/BalanceSheet/Liabilities.vue') },
     { name: 'assets', path: '/assets', component: require('./components/BalanceSheet/Assets.vue') },
     { name: 'DisplayBalance', path: '/DisplayBalance', component: require('./components/BalanceSheet/DisplayBalance.vue') },
+    { name: 'profitloss', path: '/profitloss', component: require('./components/Profitloss.vue') },
 ]
 
 Vue.component('notification', require('./components/Notification.vue'));
