@@ -41,3 +41,7 @@ Route::post('asset/subcash', 'AssetController@subcash');
 Route::post('asset/addcash', 'AssetController@addcash');
 Route::get('asset/sum', 'AssetController@sum');
 Route::resource('/asset', 'AssetController');
+
+
+Route::post('/event/dragevent', 'EventcalendarController@dragevent');
+Route::resource('/event', 'EventcalendarController');
