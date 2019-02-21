@@ -30,13 +30,20 @@ class EventcalendarController extends Controller
         'message' => 'Success'
     ], 200);
   }
-  public function update(Request $request  )
+
+  public function update(Request $request ,eventcalendar $eventcalendar)
   {
     $id = $request->id ;
-    $event = eventcalendar::find($id);
-    $event->end = request('end');
-    $event->save();
+    $eventcalendar = eventcalendar::find($id);
+    $eventcalendar->title = request('title');
+    $eventcalendar->type = request('type');
+    $eventcalendar->start = request('start');
+    $eventcalendar->end = request('end');
+    $eventcalendar->allDay = request('allDay');
+    $eventcalendar->color = request('color');
+    $eventcalendar->save();
   }
+
   public function dragevent(Request $request  )
   {
     $id = $request->id ;
@@ -46,4 +53,11 @@ class EventcalendarController extends Controller
     $event->save();
 
   }
+
+
+    public function destroy( Request $request)
+    {
+      $id = $request->get('id');
+      eventcalendar::destroy($id);
+    }
 }
