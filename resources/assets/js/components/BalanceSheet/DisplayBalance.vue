@@ -15,8 +15,14 @@
             </tr>
             <tr>
               <div id="myDIV" style="display:none">
-                <ul v-for="(capital , index ) in capital">
-                  <li>{{capital.ledger}} - {{capital.amount}}</li>
+                <ul>
+                  <div v-for="(capital , index ) in capital">
+                    <li>{{capital.ledger}} - {{capital.TotalAmount}}</li>
+                  </div>
+                  <div v-for="drawing in drawing">
+<strong>Drawings</strong>
+                    <li>{{drawing.description}} - {{drawing.amount}}</li>
+                  </div>
                 </ul>
               </div>
             </tr>
@@ -65,6 +71,18 @@
                 </ul>
               </div>
             </tr>
+
+            <tr id='start'>
+              <th @click="togglefixedassets" >Fixed Assets</th>
+              <td>{{Assets.fixed}}</td>
+            </tr>
+            <tr>
+              <div id="f_assets" style="display:none">
+                <ul v-for="(fixedassets , index ) in fixedassets">
+                  <li>{{fixedassets.ledger}} - {{fixedassets.amount}}</li>
+                </ul>
+              </div>
+            </tr>
           </tbody>
         </table>
         <div class="absolute"><p style="text-align:left;">Total:<span style="float:right;font-weight: bold"> {{Assets.assets}}</span></p></div>
@@ -107,6 +125,8 @@ export default
             month:'',
             day:'',
           },
+          drawing: {},
+          drawingsum:'',
           fixedassets: {},
           currentassets: {}
       }
@@ -138,6 +158,7 @@ export default
             this.capital = response.data.capital;
             this.loan = response.data.Loan;
             this.current = response.data.Current;
+            this.fixed = response.data.Fixed;
           });
     },
     getliabilities()
@@ -145,6 +166,11 @@ export default
       axios.get('/balancesheet/getliabsum')
           .then(response => {
               this.liabilities = response.data;
+          });
+          axios.get('/drawing')
+          .then(response => {
+            this.drawing = response.data.drawing;
+            this.drawingsum = response.data.sum;
           });
     },
     assets()
@@ -154,6 +180,7 @@ export default
         this.fixedassets = response.data.Fixed;
         this.currentassets = response.data.Current;
       });
+
 
     },
     assetssum()
@@ -203,6 +230,16 @@ export default
 
         }
     },
+    togglefixedassets()
+    {
+        var x = document.getElementById("f_assets");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+
+        }
+    }
   }
 }
 </script>

@@ -10,6 +10,7 @@ class balancesheet extends Model
     'type',
     'ledger',
     'amount',
+    'TotalAmount',
     'date',
 ];
 }

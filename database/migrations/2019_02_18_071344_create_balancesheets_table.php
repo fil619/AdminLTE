@@ -18,6 +18,7 @@ class CreateBalancesheetsTable extends Migration
             $table->string('type');
             $table->string('ledger');
             $table->integer('amount');
+            $table->integer('TotalAmount');
             $table->date('date');
             $table->timestamps();
         });

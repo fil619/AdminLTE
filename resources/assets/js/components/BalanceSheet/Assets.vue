@@ -1,4 +1,5 @@
 <template lang="html">
+  <v-app>
 <div class="Container">
   <md-tabs md-alignment="fixed">
     <md-tab id="tab-home" md-label="Assets" >
@@ -6,6 +7,15 @@
     <label>Name:</label>
     <md-input v-model="Asset"></md-input>
     </md-field>
+
+    <v-flex xs12 sm6 d-flex>
+        <v-select
+        v-model="AssetType"
+          :items="type"
+          label="Standard"
+        ></v-select>
+      </v-flex>
+
         <md-field>
         <label>Amount:</label>
         <md-input v-model="amount" type="number"></md-input>
@@ -15,6 +25,7 @@
     </md-tab>
   </md-tabs>
 </div>
+</v-app>
 </template>
 
 <script>
@@ -28,6 +39,7 @@ export default {
     AssetType: null,
     Asset: null,
     amount:null,
+    type: ['Current Assets', 'Fixed Asset'],
     assetlist:[]
 
 }),
@@ -38,7 +50,7 @@ methods:{
     axios.post('/asset', {
     type:'Assets',
     ledger: this.Asset,
-    assettype:'Current Assets' ,
+    assettype:this.AssetType,
     amount:this.amount,
   })
       .then(response => {

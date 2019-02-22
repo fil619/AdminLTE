@@ -9,7 +9,7 @@ class AssetController extends Controller
 {
   public function index()
   {
-    $fasset = Asset::where('assettype', 'Fixed Assets')->get();
+    $fasset = Asset::where('assettype', 'Fixed Asset')->get();
     $casset = Asset::where('assettype', 'Current Assets')->get();
     return response()->json([
         'Fixed'    => $fasset,
@@ -19,7 +19,7 @@ class AssetController extends Controller
   public function sum()
   {
     $total = Asset::sum('amount');
-    $fasset = Asset::where('assettype', 'Fixed Assets')->sum('amount');
+    $fasset = Asset::where('assettype', 'Fixed Asset')->sum('amount');
     $casset = Asset::where('assettype', 'Current Assets')->sum('amount');
     return response()->json([
       'assets'    => $total,

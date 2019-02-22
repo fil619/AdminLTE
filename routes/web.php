@@ -33,6 +33,7 @@ Route::get('/ledger/direct', 'LedgerController@direct');
 Route::get('/ledger/indirect', 'LedgerController@indirect');
 Route::resource('/ledger', 'LedgerController');
 
+Route::get('/balancesheet/getcolumn', 'BalancesheetController@getcolumn');
 Route::get('/balancesheet/getliabsum', 'BalancesheetController@getliabsum');
 Route::get('/balancesheet/getdetails', 'BalancesheetController@getdetails');
 Route::resource('/balancesheet', 'BalancesheetController');
@@ -45,3 +46,5 @@ Route::resource('/asset', 'AssetController');
 
 Route::post('/event/dragevent', 'EventcalendarController@dragevent');
 Route::resource('/event', 'EventcalendarController');
+
+Route::resource('/drawing', 'CapitaldrawingController');
