@@ -9,7 +9,7 @@ class CapitaldrawingController extends Controller
 {
   public function index()
   {
-    $drawing = capitaldrawing::get();
+    $drawing = capitaldrawing::where('type' , '=' , 'Investment')->get();
     $sum = capitaldrawing::get();
     return response()->json([
       'drawing'    => $drawing,

@@ -49,6 +49,7 @@ Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('DispDirect', require('./components/Expenses/DispDirect.vue'));
 Vue.component('DispInDirect', require('./components/Expenses/DispInDirect.vue'));
 Vue.component('Calendar', require('./components/Calendar.vue'));
+Vue.component('Depriciation', require('./components/BalanceSheet/Depriciation.vue'));
 
 
 const router = new VueRouter({

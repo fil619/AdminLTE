@@ -15,15 +15,12 @@
             </tr>
             <tr>
               <div id="myDIV" style="display:none">
-                <ul>
-                  <div v-for="(capital , index ) in capital">
-                    <li>{{capital.ledger}} - {{capital.TotalAmount}}</li>
+                  <div v-for="(capital , index ) in capital" style="padding-left:20px;">
+                <span>{{capital.ledger}}</span> <span style="float:right">{{capital.TotalAmount}}</span>
                   </div>
-                  <div v-for="drawing in drawing">
-<strong>Drawings</strong>
-                    <li>{{drawing.description}} - {{drawing.amount}}</li>
+                  <div v-for="drawing in drawing" style="padding-left:20px;">
+                <span>{{drawing.description}} on {{drawing.created_at}} </span> <span style="float:right">(-){{drawing.amount}}</span>
                   </div>
-                </ul>
               </div>
             </tr>
             <tr>
@@ -41,7 +38,7 @@
               <th @click="toggleCur" >Current Liabilities</th>
               <td>{{liabilities.Current}}</td>
             </tr>
-            <tr>
+            <!-- <tr> -->
               <div id="curdiv" style="display:none">
                 <ul v-for="(current , index ) in current">
                   <li>{{current.ledger}} - {{current.amount}}</li>
@@ -252,7 +249,7 @@ export default
 }
 tr
 {
-  font-size: 15px;
+  font-size: 12px;
   color:black;
 }
 div.absolute {

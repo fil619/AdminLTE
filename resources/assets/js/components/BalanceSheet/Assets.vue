@@ -12,7 +12,7 @@
         <v-select
         v-model="AssetType"
           :items="type"
-          label="Standard"
+          label="Type"
         ></v-select>
       </v-flex>
 
@@ -23,6 +23,11 @@
 
         <md-button class="md-raised md-primary" @click="addAsset">Submit</md-button>
     </md-tab>
+
+    <md-tab id="tab-Depriciation" md-label="Depriciation" >
+      <Depriciation></Depriciation>
+    </md-tab>
+
   </md-tabs>
 </div>
 </v-app>

@@ -1,4 +1,5 @@
 <template lang="html">
+  <full-calendar></full-calendar>
 
 </template>
 
