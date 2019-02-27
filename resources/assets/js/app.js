@@ -20,7 +20,7 @@ import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import Vuelidate from 'vuelidate'
 import Vuetify from 'vuetify'
-
+import VueNativeNotification from 'vue-native-notification'
 
 
 Vue.use(Vuelidate)
@@ -29,7 +29,9 @@ Vue.use(FullCalendar)
 Vue.use(VueRouter)
 Vue.use(Notifications)
 Vue.use(Vuetify)
-
+Vue.use(VueNativeNotification, {
+  requestOnNotify: true
+})
 
 let routes = [
     { name: 'dashboard', path: '/dashboard', component: require('./components/Dashboard.vue') },

@@ -43,7 +43,7 @@ Route::post('asset/addcash', 'AssetController@addcash');
 Route::get('asset/sum', 'AssetController@sum');
 Route::resource('/asset', 'AssetController');
 
-
+Route::get('/event/notification', 'EventcalendarController@notification');
 Route::post('/event/dragevent', 'EventcalendarController@dragevent');
 Route::resource('/event', 'EventcalendarController');
 

@@ -361,10 +361,21 @@ this.updatetype = selevent.type;
 
 var startdate = selevent.start._i;
 var enddate = selevent.end._i;
+
 startdate = startdate.slice(0, 10);
 enddate = enddate.slice(0, 10);
 this.update_startdate = startdate;
 this.update_enddate = enddate;
+
+
+startdate = selevent.start._i;
+enddate = selevent.end._i;
+startdate = startdate.slice(11, 16);
+enddate = enddate.slice(11, 16);
+this.update_start = startdate;
+this.update_end = enddate;
+
+
 this.$refs.updateform.resetValidation();
   $("#edit_post_model").modal("show");
 },
@@ -385,8 +396,8 @@ editevent(){
     id: this.updateid,
     title: this.updateevent,
     type: this.updatetype,
-    start: this.update_startdate  +'T'+this.update_start,
-    end: this.update_enddate +'T'+this.update_end,
+    start: this.update_startdate  +'T'+this.update_start+':00' ,
+    end: this.update_enddate +'T'+this.update_end+':00' ,
     allDay:false,
     color:colour,
   }) .then(response => {

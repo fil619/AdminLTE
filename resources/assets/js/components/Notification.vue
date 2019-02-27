@@ -10,7 +10,10 @@
                <!--THE NOTIFICAIONS DROPDOWN BOX.-->
                <div id="notifications">
                    <h3>Notifications</h3>
-                   <div style="height:300px;"></div>
+                   <div style="height:300px;">
+
+
+                   </div>
                    <div class="seeAll"><a href="#">See All</a></div>
                </div>
            </li>
@@ -19,46 +22,93 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 $(document).ready(function () {
-
-       // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
-       $('#noti_Counter')
-           .css({ opacity: 0 })
-           .text('7')  // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
-           .css({ top: '-10px' })
-           .animate({ top: '-2px', opacity: 1 }, 500);
-
        $('#noti_Button').click(function () {
-
-           // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
            $('#notifications').fadeToggle('fast', 'linear', function () {
                if ($('#notifications').is(':hidden')) {
-                   // $('#noti_Button').css('background-color', '#2E467C');
                }
-               // CHANGE BACKGROUND COLOR OF THE BUTTON.
-               // else $('#noti_Button').css('background-color', '#FFF');
            });
-
-           $('#noti_Counter').fadeOut('slow');     // HIDE THE COUNTER.
+           $('#noti_Counter').fadeOut('slow');
 
            return false;
        });
-
-       // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
        $(document).click(function () {
            $('#notifications').hide();
 
-           // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
            if ($('#noti_Counter').is(':hidden')) {
-               // CHANGE BACKGROUND COLOR OF THE BUTTON.
-               // $('#noti_Button').css('background-color', '#2E467C');
            }
        });
-
        $('#notifications').click(function () {
-           return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+           return false;
        });
    });
+
+export default {
+  data() {
+return {
+  Notifyevent:'',
+  counter:'',
+}
+},
+    mounted()
+    {
+      this.getnotification()
+      setInterval(function(){
+        var CurrentDate = new Date();
+        CurrentDate = moment(CurrentDate).format("YYYY-MM-DDTHH:mm:ss");
+        var addhour = moment(CurrentDate).add(1,'hours').format("YYYY-MM-DDTHH:mm:ss");
+        axios.get('/event/notification' , {
+          params: {
+                  CurrDate: CurrentDate,
+                  EndDate: addhour,
+                  }
+        })
+        .then(response => {
+        this.Notifyevent = response.data.event  ;
+        if (this.Notifyevent  != '' )
+        {
+          var title = this.Notifyevent[0].title;
+          var start = this.Notifyevent[0].start;
+          var end = this.Notifyevent[0].end;
+          start = start.slice(11, 16);
+          end = end.slice(11, 16);
+          var type = this.Notifyevent[0].type;
+
+          this.$notification.show( type + ' Event : '+ title  , {
+            body: 'Starts At : '+ start + ' to ' + end,
+            requireInteraction: true
+          }, {})
+        }
+         })
+       }.bind(this), 1000);
+    },
+
+    methods:{
+      getnotification()
+      {
+        var CurrentDate = new Date();
+        CurrentDate = moment(CurrentDate).format("YYYY-MM-DDTHH:mm:ss");
+        var addhour = moment(CurrentDate).add(1,'hours').format("YYYY-MM-DDTHH:mm:ss");
+        axios.get('/event/notification' , {
+          params: {
+                  CurrDate: CurrentDate,
+                  EndDate: addhour,
+                  }
+        })
+        .then(response => {
+        this.Notifyevent = response.data.event  ;
+        this.counter = this.Notifyevent.length ;
+
+         })
+      },
+      notify () {
+
+
+      }
+    }
+  }
 </script>
 <style media="screen" scoped>
 #NotBell{

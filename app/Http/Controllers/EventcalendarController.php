@@ -14,6 +14,16 @@ class EventcalendarController extends Controller
         'event'    => $event,
     ], 200);
   }
+  public function notification(Request $request)
+  {
+    $enddate = $request->EndDate;
+    $event = eventcalendar::where('start','=',$enddate)
+                            ->get();
+    return response()->json([
+      'event'    => $event,
+    ], 200);
+
+  }
   public function store(Request $request)
   {
     $event = eventcalendar::create([
