@@ -45,6 +45,8 @@ let routes = [
     { name: 'assets', path: '/assets', component: require('./components/BalanceSheet/Assets.vue') },
     { name: 'DisplayBalance', path: '/DisplayBalance', component: require('./components/BalanceSheet/DisplayBalance.vue') },
     { name: 'profitloss', path: '/profitloss', component: require('./components/Profitloss.vue') },
+    { name: 'DisplayBalance', path: '/createusers', component: require('./components/User/Create.vue') },
+
 ]
 
 Vue.component('notification', require('./components/Notification.vue'));

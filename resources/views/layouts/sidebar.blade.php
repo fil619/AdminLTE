@@ -20,6 +20,11 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
+                    <router-link to="/createusers" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i><p>User</p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
                     <router-link to="/Ledgers" class="nav-link">
                         <i class="nav-icon fas fa-book"></i><p>Ledgers</p>
                     </router-link>
