@@ -19,10 +19,31 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p>
                     </router-link>
                 </li>
-                <li class="nav-item">
-                    <router-link to="/createusers" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i><p>User</p>
-                    </router-link>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-users"></i>
+                        <p>
+                            Users
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <router-link to="/createusers" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i><p>Add</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/editusers" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i><p>Edit</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                        <router-link to="/attendance" class="nav-link">
+                            <i class="nav-icon fas fa-key"></i><p>Attendance</p>
+                        </router-link>
+                      </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <router-link to="/Ledgers" class="nav-link">

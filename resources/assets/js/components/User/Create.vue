@@ -9,38 +9,41 @@
            <span class="title font-weight-light">ADD NEW EMPLOYEE</span>
          </v-card-title>
 
-<strong style="float: right; padding-right:10px" > <v-icon style="font-size: 18px !important">grade</v-icon> Required Fields</strong>
          <v-flex xs12 sm12 md10 offset-md1>
          <v-form
              ref="form"
              v-model="valid"
              lazy-validation
            >
+           <v-text-field
+             v-model="empid"
+             :rules="[  v => !!v || 'Employee ID is required']"
+             label="Employee ID(*)"
+             required
+           ></v-text-field>
+
              <v-text-field
                v-model="firstname"
                :rules="nameRules"
-               label="First Name"
+               label="First Name(*)"
                :counter="30"
                required
-               append-outer-icon="grade"
              ></v-text-field>
 
              <v-text-field
                v-model="lastname"
                :rules="nameRules"
-               label="Last Name"
+               label="Last Name(*)"
                :counter="30"
                required
-               append-outer-icon="grade"
              ></v-text-field>
 
              <v-text-field
                v-model="dob"
                type = "date"
                :rules="[  v => !!v || 'Date of Birth is required']"
-               label="D.O.B"
+               label="D.O.B(*)"
                required
-               append-outer-icon="grade"
              ></v-text-field>
 
              <v-textarea
@@ -48,8 +51,7 @@
               outline
               :rules="[  v => !!v || 'Address is required']"
               name="input-7-4"
-              label="Address"
-              append-outer-icon="grade"
+              label="Address(*)"
             ></v-textarea>
 
             <v-layout row wrap>
@@ -65,10 +67,10 @@
              v-model="phone"
              type="number"
              :rules="[  v => !!v || 'Phone Number is required', v => (v && v.length <= 10) || 'Phone Number must be less than 10 digits']"
-             label="Phone Number"
+             label="Phone Number(*)"
              :counter="10"
              required
-             append-outer-icon="grade"
+
              ></v-text-field>
            </v-flex>
          </v-layout>
@@ -91,38 +93,34 @@
                v-model="select"
                :items="type"
                :rules="[v => !!v || 'Employee type is required']"
-               label="Employee type"
+               label="Employee type(*)"
                required
-               append-outer-icon="grade"
              ></v-select>
 
              <v-text-field
                v-model="joined"
                type = "date"
-               label="Joined On"
+               label="Joined On(*)"
                :rules="[  v => !!v || 'Joining Date is required']"
                required
-               append-outer-icon="grade"
              ></v-text-field>
              <v-layout row wrap>
             <v-flex xs5 md5 offset-xs1 offset-md1>
              <v-text-field
                v-model="password"
-               label="Password"
+               label="Password(*)"
                type="password"
                :rules="[  v => !!v || 'Password is required']"
                required
-               append-outer-icon="grade"
              ></v-text-field>
            </v-flex>
            <v-flex xs5 md5  offset-xs1 offset-md1>
              <v-text-field
                v-model="confirmpwd"
-               label="Confirm Password"
+               label="Confirm Password(*)"
                type="password"
                :rules="[  v => (!!v && v) === this.password || 'Password do not match']"
                required
-               append-outer-icon="grade"
              ></v-text-field>
            </v-flex>
          </v-layout>
@@ -140,13 +138,13 @@
              >
                Reset Form
              </v-btn>
-
+<!-- 
              <v-btn
                color="warning"
                @click="resetValidation"
              >
                Reset Validation
-             </v-btn>
+             </v-btn> -->
            </v-form>
          </v-flex>
       </v-card>
@@ -159,8 +157,13 @@
 
 <script>
 export default {
+  mounted()
+  {
+
+  },
     data: () => ({
       valid: true,
+      empid:'',
       firstname:'',
       lastname:'',
       dob:'',
@@ -194,21 +197,35 @@ export default {
       validate () {
         if (this.$refs.form.validate()) {
           this.snackbar = true
+            axios.post('/employee', {
+            employee_id:this.empid,
+            first_name: this.firstname,
+            last_name:this.lastname,
+            dob:this.dob,
+            address:this.address,
+            telephone:this.telephone,
+            phone_no:this.phone,
+            email:this.email,
+            adhar:this.adhar,
+            type:this.select,
+            joined_on:this.joined,
+            password:this.password,
+          })
+              .then(response => {
+                this.$refs.form.reset()
+              })
         }
       },
       reset () {
         this.$refs.form.reset()
       },
-      resetValidation () {
-        this.$refs.form.resetValidation()
-      }
+      // resetValidation () {
+      //   this.$refs.form.resetValidation()
+      // }
     }
   }
 </script>
 
 <style >
-.v-icon{
-  font-size: 10px !important;
-  color: black !important ;
-}
+
 </style>

@@ -6,7 +6,7 @@
 export default {
   methods: {
     notify () {
-      
+
       this.$notification.show('Hello World', {
         body: 'This is an example!'
       }, {})

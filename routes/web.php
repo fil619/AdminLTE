@@ -48,3 +48,5 @@ Route::post('/event/dragevent', 'EventcalendarController@dragevent');
 Route::resource('/event', 'EventcalendarController');
 
 Route::resource('/drawing', 'CapitaldrawingController');
+
+Route::resource('/employee', 'EmployeeController');
