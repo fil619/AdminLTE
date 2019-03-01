@@ -138,7 +138,7 @@
              >
                Reset Form
              </v-btn>
-<!-- 
+<!--
              <v-btn
                color="warning"
                @click="resetValidation"
@@ -210,6 +210,7 @@ export default {
             type:this.select,
             joined_on:this.joined,
             password:this.password,
+            status:'Not Available',
           })
               .then(response => {
                 this.$refs.form.reset()

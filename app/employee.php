@@ -19,6 +19,8 @@ class employee extends Model
     'adhar',
     'type',
     'password',
-    'joined_on'
+    'joined_on',
+    'status'
   ];
+  public $timestamps = false;
 }

@@ -39,7 +39,7 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                        <router-link to="/attendance" class="nav-link">
+                        <router-link to="/Attendance" class="nav-link">
                             <i class="nav-icon fas fa-key"></i><p>Attendance</p>
                         </router-link>
                       </li>

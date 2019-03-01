@@ -21,15 +21,15 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->string('dob');
             $table->string('address');
-            $table->string('telephone')->nullable();;
+            $table->string('telephone')->nullable();
             $table->string('phone_no');
-            $table->string('email')->nullable();;
-            $table->string('adhar')->nullable();;
+            $table->string('email')->nullable();
+            $table->string('adhar')->nullable();
             $table->string('type');
             $table->string('password');
             $table->string('joined_on');
-            $table->string('left_on')->nullable();;
-            $table->timestamps();
+            $table->string('left_on')->nullable();
+            $table->string('status')->nullable();
         });
     }
 

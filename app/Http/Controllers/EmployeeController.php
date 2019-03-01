@@ -34,12 +34,22 @@ class EmployeeController extends Controller
       'type'   => request('type'),
       'joined_on'   => request('joined_on'),
       'password'   => request('password'),
+      'status'   => request('status'),
+
     ]);
 
     return response()->json([
         'event'    => $event,
         'message' => 'Success'
     ], 200);
+  }
+  public function status(Request $request)
+  {
+    $employee_id = $request->employee_id ;
+    $status = $request->status;
+    $employee = employee::where('employee_id',$employee_id )
+                            ->update(['status' => $status]);
+                            return $status;
   }
   public function update(Request $request)
   {

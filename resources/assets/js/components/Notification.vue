@@ -57,8 +57,8 @@ return {
       this.getnotification()
       setInterval(function(){
         var CurrentDate = new Date();
-        CurrentDate = moment(CurrentDate).format("YYYY-MM-DDTHH:mm:ss");
-        var addhour = moment(CurrentDate).add(1,'hours').format("YYYY-MM-DDTHH:mm:ss");
+        CurrentDate = moment(CurrentDate).format("YYYY-MM-DDTHH:mm");
+        var addhour = moment(CurrentDate).add(1,'hours').format("YYYY-MM-DDTHH:mm");
         axios.get('/event/notification' , {
           params: {
                   CurrDate: CurrentDate,
@@ -82,7 +82,7 @@ return {
           }, {})
         }
          })
-       }.bind(this), 1000);
+       }.bind(this), 60000);
     },
 
     methods:{

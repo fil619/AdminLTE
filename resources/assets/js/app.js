@@ -47,6 +47,7 @@ let routes = [
     { name: 'profitloss', path: '/profitloss', component: require('./components/Profitloss.vue') },
     { name: 'createusers', path: '/createusers', component: require('./components/User/Create.vue') },
     { name: 'editusers', path: '/editusers', component: require('./components/User/Edit.vue') },
+    { name: 'Attendance', path: '/Attendance', component: require('./components/User/Attendance.vue') },
 
 ]
 
