@@ -49,10 +49,16 @@ Route::resource('/event', 'EventcalendarController');
 
 Route::resource('/drawing', 'CapitaldrawingController');
 
+Route::get('/employee/staff', 'EmployeeController@staff');
 Route::patch('/employee/status', 'EmployeeController@status');
 Route::resource('/employee', 'EmployeeController');
 
 Route::patch('/attendance/checkout','AttendanceController@checkout');
 Route::post('/attendance/checkin', 'AttendanceController@checkin');
+Route::get('/attendance/getcheckin','AttendanceController@getcheckin');
+Route::get('/attendance/report','AttendanceController@attendancereport');
+
 
 Route::resource('/attendance', 'AttendanceController');
+
+Route::resource('/advance', 'AdvancetakenController');

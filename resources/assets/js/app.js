@@ -48,6 +48,8 @@ let routes = [
     { name: 'createusers', path: '/createusers', component: require('./components/User/Create.vue') },
     { name: 'editusers', path: '/editusers', component: require('./components/User/Edit.vue') },
     { name: 'Attendance', path: '/Attendance', component: require('./components/User/Attendance.vue') },
+    { name: 'Report', path: '/Report', component: require('./components/User/EmployeeReport.vue') },
+    { name: 'Advance', path: '/Advance', component: require('./components/User/Advance.vue') },
 
 ]
 

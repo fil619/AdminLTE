@@ -1,4 +1,4 @@
-<template>
+;;<template>
   <v-app>
   <v-layout>
     <v-flex xs12 sm12 md10 offset-md1>
@@ -220,9 +220,6 @@ export default {
       reset () {
         this.$refs.form.reset()
       },
-      // resetValidation () {
-      //   this.$refs.form.resetValidation()
-      // }
     }
   }
 </script>

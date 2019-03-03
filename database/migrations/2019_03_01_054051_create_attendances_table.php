@@ -20,6 +20,8 @@ class CreateAttendancesTable extends Migration
             $table->string('status');
             $table->string('checkin');
             $table->string('checkout')->nullable();
+            $table->string('working_hours')->nullable();
+            $table->string('daystatus')->nullable();
         });
     }
 

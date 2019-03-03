@@ -7,15 +7,39 @@ use App\attendance;
 
 class AttendanceController extends Controller
 {
+
+  public function attendancereport(Request $request)
+  {
+    // return response()->json([
+      $employee_id = $request->employee_id;
+      $startdaate  = $request->startdaate;
+      $enddaate    = $request->enddaate;
+    // ], 200);
+
+    $report = attendance::where('employee_id' , '=' , $employee_id)
+                        ->whereBetween('date', [$startdaate, $enddaate])->orderBy('date', 'asc')->get();
+
+    return response()->json([
+      'report'    => $report,
+    ], 200);
+  }
+
   public function checkout(Request $request )
   {
+
     $employee_id = $request->employee_id ;
     $date = $request->date ;
     $checkout = $request->checkout ;
+    $hours = $request->hours ;
+    $daystatus = $request->daystatus ;
 
     $attendance = attendance::where('date', $date )
                             ->where('employee_id',$employee_id )
-                            ->update(['checkout' => $checkout]);
+                            ->update([
+                              'checkout' => $checkout,
+                              'working_hours' => $hours,
+                              'daystatus' => $daystatus,
+                            ]);
   }
   public function checkin(Request $request )
   {
@@ -33,5 +57,13 @@ class AttendanceController extends Controller
         ]
     );
   }
-
+  public function getcheckin(Request $request)
+  {
+    $employee_id = $request->employee_id ;
+    $date = $request->date ;
+    $checkin = attendance::where('date', $date )
+                            ->where('employee_id',$employee_id )
+                            ->pluck('checkin');
+    return $checkin;
+  }
 }

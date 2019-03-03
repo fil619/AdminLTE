@@ -15,6 +15,18 @@ class EmployeeController extends Controller
     ], 200);
   }
 
+  public function staff()
+  {
+    $first = employee::where('type','!=','Admin')->get();
+    return $first ;
+    // $first = employee::where('type','!=','Admin')->pluck('first_name');
+    // $last = employee::where('type','!=','Admin')->pluck('last_name');
+    // return response()->json([
+    //   'first'    => $first,
+    //   'last'    => $last,
+    // ], 200);
+  }
+
   public function store(Request $request)
   {
     $request->session()->put('company_code','12CE67');

@@ -11,7 +11,9 @@ class attendance extends Model
     'employee_id',
     'status',
     'checkin',
-    'checkout'
+    'checkout',
+    'working_hours',
+    'daystatus'
 ];
 public $timestamps = false;
 }
