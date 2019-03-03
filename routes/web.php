@@ -61,5 +61,12 @@ Route::get('/attendance/report','AttendanceController@attendancereport');
 
 Route::resource('/attendance', 'AttendanceController');
 
+Route::get('/advance/report','AdvancetakenController@advancereport');
 Route::resource('/advance', 'AdvancetakenController');
 Route::resource('/additional', 'AdditionalController');
+
+//billing
+Route::get('/billing/report','BillingController@report');
+Route::resource('/billing', 'BillingController');
+Route::get('/repair/empreport','RepairController@empreport');
+Route::resource('/repair', 'RepairController');

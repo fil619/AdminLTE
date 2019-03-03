@@ -16,4 +16,15 @@ class AdvancetakenController extends Controller
       'reason'         => request('reason'),
     ]);
   }
+  public function advancereport(Request $request)
+  {
+    $id =  $request->employee_id;
+    $start =  $request->startdate;
+    $end =  $request->enddate;
+    $Billing = Advancetaken::where('emp_id' , '=' , $id)
+                        ->whereBetween('date', [$start, $end])->orderBy('date', 'asc')->get();
+return $Billing;
+
+  }
+
 }

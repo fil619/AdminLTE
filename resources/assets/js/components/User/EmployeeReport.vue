@@ -58,25 +58,28 @@
       </v-container>
     </v-form>
 
-    <v-container grid-list-md text-xs-center>
-      <v-layout row wrap>
+    <!-- <v-container grid-list-md text-xs-center> -->
+      <v-layout row wrap justify-center style="padding-top:10px">
         <v-flex sm6 md6>
-          <strong style="color:#c62828" class="subheading font-weight-bold">Report Of:</strong >
-          <strong class="subheading font-weight-bold"> {{getName}}</strong>
+          <div class="text-xs-center">
+            <strong style="color:#c62828" class="subheading font-weight-bold">Report Of:</strong >
+              <strong class="subheading font-weight-bold"> {{getName}}</strong>
+          </div>
         </v-flex>
         <v-flex sm6 md6>
+          <!-- <div class="text-xs-center"> -->
           <strong style="color:#c62828" class="subheading font-weight-bold">For:</strong >
-            <strong class="subheading font-weight-bold" v-if="enddate"> {{startdate}} to {{enddate}}</strong>
+            <strong class="subheading font-weight-bold" v-if="enddate && onlystart"> {{startdate}}  <i class="fas fa-long-arrow-alt-right" ></i> {{enddate}}</strong>
           <strong class="subheading font-weight-bold" v-else> {{startdate}}</strong>
-
+          <!-- </div> -->
         </v-flex>
       </v-layout>
-    </v-container>
+    <!-- </v-container> -->
 
     <v-container style="overflow-x:auto;">
       <v-layout justify-center align-start>
 
-        <table>
+        <table v-if="report">
         <tr>
           <th style="background-color:#c62828">No.</th>
           <th style="background-color:#c62828">Work Done</th>
@@ -86,21 +89,45 @@
           <th style="background-color:#c62828">Amount</th>
         </tr>
 
+        <tr  v-for="(report , index ) in report">
+          <td>{{index}}</td>
+          <td>{{report.servicedetails}}</td>
+          <td>{{report.billno}}</td>
+          <td>{{report.servicecharge}}</td>
+          <td>{{report.date}}</td>
+          <td>{{report.servicecharge}}</td>
+        </tr>
+        <tr v-if="report">
+          <th colspan="4"></th>
+          <th>Earned:</th>
+          <th>{{earned}}</th>
+        </tr>
         <tr>
-          <td>Jill</td>
-          <td>Smith</td>
-          <td>50</td>
-          <td>50</td>
-          <td>50</td>
-          <td>50</td>
+          <th style="background-color:#26C6DA">No.</th>
+          <th style="background-color:#26C6DA"  colspan="3">Advance Taken For</th>
+          <th style="background-color:#26C6DA">Date</th>
+          <th style="background-color:#26C6DA">Amount</th>
+        </tr>
+
+        <tr  v-for="(advancereport , index ) in advancereport" align="right">
+          <td>{{index}}</td>
+          <td colspan="3">{{advancereport.reason}}</td>
+          <td>{{advancereport.date}}</td>
+          <td>{{advancereport.amount}}</td>
+        </tr>
+        <tr v-if="report">
+          <th colspan="4"></th>
+          <th>To be Deducted:</th>
+          <th>{{deducted}}</th>
+        </tr>
+        <tr v-if="report">
+          <th colspan="4" style="background-color:#B2FF59"></th>
+          <th style="background-color:#B2FF59">Payable:</th>
+          <th style="background-color:#B2FF59">{{total}}</th>
         </tr>
       </table>
-
     </v-layout>
   </v-container>
-
-
-
 </div>
 </v-app>
 </template>
@@ -111,24 +138,52 @@ export default {
   {
     this.getstaff();
   },
-  computed: {
-            getName()
-            {
+  computed:
+{
+  getName()
+  {
 for (var i = 0; i < this.staff.length; i++)
 {
 if ( this.employee == this.staff[i].employee_id)
 {
-  return this.staff[i].first_name +' '+ this.staff[i].last_name;
+return this.staff[i].first_name +' '+ this.staff[i].last_name;
 }
-              }
-            }
-        },
+    }
+  },
+  earned()
+  {
+    var sum = 0;
+    for (var i = 0; i < this.report.length; i++) {
+      sum = sum + this.report[i].servicecharge;
+    }
+    this.income = sum;
+    return sum;
+  },
+  deducted()
+  {
+    var sum = 0;
+    for (var i = 0; i < this.advancereport.length; i++) {
+      sum = sum + this.advancereport[i].amount;
+    }
+    this.advance = sum;
+    return sum;
+  },
+  total()
+  {
+  var to
+    return this.income - this.advance;
+  }
+},
   data(){
       return {
-
 employee:'',
 startdate:new Date().toISOString().substr(0, 10),
 enddate:'',
+income:'',
+onlystart:'',
+advance:'',
+report:'',
+advancereport:'',
 valid:true,
 staff:[]
       }
@@ -137,10 +192,34 @@ staff:[]
   {
     generate () {
       if (this.$refs.form.validate()) {
-        console.log(this.employee);
-        console.log(this.startdate);
-        console.log(this.enddate);
-        this.$refs.form.reset();
+        this.onlystart = true;
+        if(!this.enddate)
+        {
+          this.enddate = this.startdate;
+          this.onlystart = false;
+        }
+        axios.get('/repair/empreport',{
+          params: {
+                employee_id:this.employee,
+                startdate:this.startdate,
+                enddate:this.enddate,
+                   }
+        }).then(response => {
+          this.report = response.data  ;
+         })
+
+
+           axios.get('/advance/report',{
+             params: {
+                   employee_id:this.employee,
+                   startdate:this.startdate,
+                   enddate:this.enddate,
+                      }
+           }).then(response => {
+             this.advancereport = response.data  ;
+             console.log(this.advancereport);
+            })
+
       }
     },
     getstaff()
