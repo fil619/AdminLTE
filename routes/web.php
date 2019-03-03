@@ -62,3 +62,4 @@ Route::get('/attendance/report','AttendanceController@attendancereport');
 Route::resource('/attendance', 'AttendanceController');
 
 Route::resource('/advance', 'AdvancetakenController');
+Route::resource('/additional', 'AdditionalController');

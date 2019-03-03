@@ -49,6 +49,11 @@
                           </router-link>
                       </li>
                       <li class="nav-item">
+                          <router-link to="/Addtnpayment" class="nav-link">
+                              <i class="nav-icon fas fa-users"></i><p>Additional payment</p>
+                          </router-link>
+                      </li>
+                      <li class="nav-item">
                       <router-link to="/Report" class="nav-link">
                           <i class="nav-icon fas fa-key"></i><p>Reports</p>
                       </router-link>

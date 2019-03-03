@@ -106,4 +106,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.v-btn:focus {
+  background-color: yellow !important;
+  color: black !important ;
+}
 </style>
