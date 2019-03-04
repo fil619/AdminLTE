@@ -18,12 +18,10 @@ import VueMaterial from 'vue-material'
 import FullCalendar from 'vue-full-calendar'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
-import Vuelidate from 'vuelidate'
 import Vuetify from 'vuetify'
 import VueNativeNotification from 'vue-native-notification'
 
 
-Vue.use(Vuelidate)
 Vue.use(VueMaterial)
 Vue.use(FullCalendar)
 Vue.use(VueRouter)

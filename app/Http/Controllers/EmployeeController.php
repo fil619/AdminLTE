@@ -33,7 +33,6 @@ class EmployeeController extends Controller
     $Company_Code = $request->session()->get('company_code');
 
     $event = employee::create([
-      'employee_id'   => request('employee_id'),
       'company_code'   => $Company_Code,
       'first_name'   => request('first_name'),
       'last_name'   => request('last_name'),
@@ -59,16 +58,15 @@ class EmployeeController extends Controller
   {
     $employee_id = $request->employee_id ;
     $status = $request->status;
-    $employee = employee::where('employee_id',$employee_id )
+    $employee = employee::where('id',$employee_id )
                             ->update(['status' => $status]);
                             return $status;
   }
   public function update(Request $request)
   {
     // return $request;
-    $id = $request->id ;
+    $id = $request->employee_id ;
     $employee = employee::find($id);
-    $employee->employee_id = request('employee_id');
     $employee->first_name = request('first_name');
     $employee->last_name = request('last_name');
     $employee->dob = request('dob');

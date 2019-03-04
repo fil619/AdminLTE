@@ -14,4 +14,5 @@ class eventcalendar extends Model
     'allDay',
     'color'
 ];
+public $timestamps = false;
 }

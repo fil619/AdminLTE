@@ -10,12 +10,13 @@
         <v-layout row wrap>
           <v-flex xs12 sm6 md3>
                 <v-select
+                class="no-print"
                 label="Select"
                 :rules="[  v => !!v || 'Select an Employee']"
                 v-bind:items="staff"
                 v-model="employee"
                 item-text="`${data.item.name}  ${data.item.group}`"
-                item-value="employee_id"
+                item-value="id"
                 autofocus
                 >
                 <template slot="selection" slot-scope="data">
@@ -32,7 +33,8 @@
           </v-flex>
           <v-flex xs12 sm6 md3 >
                 <v-text-field
-                  v-model="startdate"
+                class="no-print"
+                v-model="startdate"
                   label="Start Date"
                   type="date"
                   required
@@ -40,6 +42,7 @@
           </v-flex>
           <v-flex xs12 sm6 md3 >
                 <v-text-field
+                  class="no-print"
                   v-model="enddate"
                   label="End Date"
                   type="date"
@@ -48,6 +51,7 @@
           </v-flex>
           <v-flex xs12 sm6 md3>
                 <v-btn
+                class="no-print"
                   color="success"
                   @click="generate"
                 >
@@ -144,7 +148,7 @@ export default {
   {
 for (var i = 0; i < this.staff.length; i++)
 {
-if ( this.employee == this.staff[i].employee_id)
+if ( this.employee == this.staff[i].id)
 {
 return this.staff[i].first_name +' '+ this.staff[i].last_name;
 }
@@ -217,7 +221,6 @@ staff:[]
                       }
            }).then(response => {
              this.advancereport = response.data  ;
-             console.log(this.advancereport);
             })
 
       }
@@ -248,4 +251,13 @@ th, td {
 tr:nth-child(even) {
   background-color: #f2f2f2
 }
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+@page { size: auto;  margin: 0mm; }
 </style>

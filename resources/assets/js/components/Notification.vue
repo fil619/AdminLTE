@@ -62,7 +62,7 @@ return {
         axios.get('/event/notification' , {
           params: {
                   CurrDate: CurrentDate,
-                  EndDate: addhour,
+                  EndDate: addhour+':00',
                   }
         })
         .then(response => {

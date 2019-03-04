@@ -192,7 +192,7 @@
                         height="600"
                         id="ListCalendar"
                         >
-                        <full-calendar :config="configlist" :events="get_event" height="500"></full-calendar>
+                        <full-calendar ref="calendar" :config="configlist" :events="get_event" height="500"></full-calendar>
                       </v-sheet>
                     </v-flex>
 
@@ -258,21 +258,15 @@ import 'fullcalendar/dist/fullcalendar.css';
       type: ['Personal', 'Business'],
       configlist:{
         defaultView:"listDay",
-        allDay : false,
-        agendaWeek:false,
-        agendayDay:false,
         header: {
-     left:   '',
-     center: '',
-     right:  ''
+          left:   'prev,next today',
+          center: 'title',
+          right:  'listDay'
    }
       },
       config:{
         defaultView:"month",
         eventLimit: 3,
-        allDay : false,
-        agendaWeek:false,
-        agendayDay:false,
         header: {
      left:   'prev,next today',
      center: 'title',
@@ -311,7 +305,7 @@ import 'fullcalendar/dist/fullcalendar.css';
       {
         this.date = date ;
         this.displaydate = date.format() ;
-
+        $("#calendar").fullCalendar('gotoDate', date);
         this.$refs.form.reset();
         this.$refs.form.resetValidation();
 

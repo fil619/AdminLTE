@@ -29,7 +29,7 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+          <v-btn class="no-print" color="blue darken-1" flat @click="dialog = false">Close</v-btn>
           <!-- <v-btn color="blue darken-1" flat @click="dialog = false">Save</v-btn> -->
         </v-card-actions>
       </v-card>
@@ -37,7 +37,7 @@
   </v-layout>
 
   <!-- <v-container grid-list-md text-xs-center> -->
-     <v-layout row wrap>
+     <v-layout row wrap class="no-print">
        <v-flex xs12 sm12 md5>
           <v-card dark >
             <v-card-text class="px-0">
@@ -75,7 +75,7 @@
     <v-layout
       flex-child
       wrap
-
+      class="no-print"
     >
       <v-flex
         xs12
@@ -163,6 +163,7 @@
     flex-child
       wrap
       style="padding-top:5px"
+      class="no-print"
        >
       <v-flex xs12>
         <v-card dark color="green">
@@ -247,6 +248,7 @@
      </v-layout>
 <!-- </v-container> -->
 <v-snackbar
+class="no-print"
   v-model="snackbar"
   :bottom= "true"
   :right= "true"
@@ -313,12 +315,12 @@ export default {
         { text: 'Check Out',    align: 'right',   value: 'out' , sortable: false },
       ],
       modalheaders: [
-          { text: 'Date', value: 'date' ,sortable: false},
-          { text: 'Check In', value: 'checkin' ,sortable: false},
-          { text: 'Check Out', value: 'checkout' ,sortable: false},
-          { text: 'Working Hours', value: 'hours' ,sortable: false},
-          { text: 'Attendance', value: 'attendance' ,sortable: false},
-          { text: 'Status', value: 'status',sortable: false }
+          { text: 'Date', align: 'right', value: 'date' ,sortable: false},
+          { text: 'Check In', align: 'right', value: 'checkin' ,sortable: false},
+          { text: 'Check Out', align: 'right', value: 'checkout' ,sortable: false},
+          { text: 'Working Hours', align: 'right', value: 'hours' ,sortable: false},
+          { text: 'Attendance', align: 'right', value: 'attendance' ,sortable: false},
+          { text: 'Status', align: 'right', value: 'status',sortable: false }
         ],
     y: 'top',
     x: 'right',
@@ -393,6 +395,9 @@ getemployees()
         hours: hours,
         daystatus:daystatus,
       })
+      .then(response => {
+
+      })
 
   });
   },
@@ -430,5 +435,12 @@ generaterept()
 }
 </script>
 <style media="screen" scoped>
-
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+@page { size: auto;  margin: 0mm; }
 </style>

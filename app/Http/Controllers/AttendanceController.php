@@ -10,11 +10,9 @@ class AttendanceController extends Controller
 
   public function attendancereport(Request $request)
   {
-    // return response()->json([
       $employee_id = $request->employee_id;
       $startdaate  = $request->startdaate;
       $enddaate    = $request->enddaate;
-    // ], 200);
 
     $report = attendance::where('employee_id' , '=' , $employee_id)
                         ->whereBetween('date', [$startdaate, $enddaate])->orderBy('date', 'asc')->get();
@@ -47,6 +45,7 @@ class AttendanceController extends Controller
     $date = $request->date ;
     $status = $request->status ;
     $checkin = $request->checkin ;
+
     $attendance = attendance::firstOrCreate(
         ['employee_id' => $employee_id , 'date' => $date  ],
         [

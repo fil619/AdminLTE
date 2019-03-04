@@ -21,7 +21,6 @@ class CreateEventcalendarsTable extends Migration
             $table->string('end');
             $table->string('allDay');
             $table->string('color');
-            $table->timestamps();
         });
     }
 

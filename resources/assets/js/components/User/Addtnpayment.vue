@@ -20,7 +20,7 @@
       v-bind:items="staff"
       v-model="employee"
       item-text="`${data.item.name}  ${data.item.group}`"
-      item-value="employee_id"
+      item-value="id"
       autofocus
     >
       <template slot="selection" slot-scope="data">

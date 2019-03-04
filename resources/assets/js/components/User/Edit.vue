@@ -14,10 +14,11 @@
                          lazy-validation
                        >
                        <v-text-field
-                         v-model="editemployee.employee_id"
+                         v-model="editemployee.id"
                          :rules="[  v => !!v || 'Employee ID is required']"
                          label="Employee ID(*)"
                          required
+                         disabled
                        ></v-text-field>
 
                        <v-layout row wrap>
@@ -49,13 +50,18 @@
                            required
                          ></v-text-field>
 
-                         <v-textarea
+                         <v-text-field
+                           v-model="editemployee.address"
+                           :rules="[  v => !!v || 'Address is required']"
+                           label="Address(*)"
+                           required
+                         ></v-text-field>
+
+                         <!-- <v-textarea
                          v-model="editemployee.address"
                           outline
                           :rules="[  v => !!v || 'Address is required']"
-                          name="input-7-4"
-                          label="Address(*)"
-                        ></v-textarea>
+                        ></v-textarea> -->
 
                         <v-layout row wrap>
                            <v-flex xs5 md5 >
@@ -141,7 +147,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-             
+
     <v-layout
       flex-child
       wrap
@@ -329,8 +335,7 @@
           this.snackbar = true
 
           axios.patch('/employee/update' + this.editemployee.id, {
-            id: this.editemployee.id,
-            employee_id: this.editemployee.employee_id,
+            employee_id: this.editemployee.id,
             first_name: this.editemployee.first_name,
             last_name: this.editemployee.last_name,
             dob: this.editemployee.dob,

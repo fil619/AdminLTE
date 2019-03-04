@@ -20,7 +20,7 @@
       v-bind:items="staff"
       v-model="employee"
       item-text="`${data.item.name}  ${data.item.group}`"
-      item-value="employee_id"
+      item-value="id"
       autofocus
     >
       <template slot="selection" slot-scope="data">
@@ -91,8 +91,7 @@ export default {
           date:this.tkenon +' 00:00:00' ,
           reason:this.reason ,
 })
-
-
+this.$refs.form.reset()
       }
     },
     getstaff()
